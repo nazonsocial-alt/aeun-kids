@@ -1,0 +1,1267 @@
+<!doctype html>
+<html lang="bn">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>AEUN Kids – Learn &amp; Play | বাংলা ও English শেখা বাচ্চাদের জন্য</title>
+<meta name="description" content="AEUN Kids – Learn & Play: ২–৭ বছরের বাচ্চাদের জন্য বাংলা ও English বর্ণমালা, সংখ্যা, রং, আকৃতি, পশুপাখি, ফল, ট্রেসিং, কুইজ, মেমরি গেম আর ফ্ল্যাশ কার্ড — মজায় মজায় শেখা।" />
+<meta name="theme-color" content="#4F46E5" />
+<meta name="color-scheme" content="light dark" />
+<link rel="manifest" href="assets/manifest.json" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-capable" content="yes" />
+<meta name="mobile-web-app-capable" content="yes" />
+<meta name="apple-mobile-web-app-status-bar-style" content="default" />
+<meta name="apple-mobile-web-app-title" content="AEUN Kids" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@500;600;700;800&family=Hind+Siliguri:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root{
+  --bg:#FFF8EC; --bg2:#FFF1D6; --card:#FFFFFF; --ink:#22304A; --ink-soft:#5A6B8C;
+  --brand:#4F46E5; --brand-dark:#3B34C4; --amber:#FFB020; --teal:#00A88F; --coral:#FF6B5E;
+  --pink:#F06595; --sky:#3E9BDC; --green:#51B04C; --line:#F0E3CB;
+  --shadow:0 6px 0 rgba(34,48,74,.08), 0 14px 28px rgba(34,48,74,.10);
+  --radius:22px;
+}
+html[data-theme="dark"]{
+  --bg:#131A2C; --bg2:#0E1424; --card:#1D2742; --ink:#F2F5FF; --ink-soft:#A9B6D6;
+  --line:#2C3A5E; --shadow:0 6px 0 rgba(0,0,0,.25), 0 14px 28px rgba(0,0,0,.35);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0; background:var(--bg); color:var(--ink);
+  font-family:"Hind Siliguri","Baloo 2",system-ui,sans-serif;
+  -webkit-tap-highlight-color:transparent;
+}
+button,[role="button"],select,summary{ min-height:44px; }
+button{ font-family:inherit; cursor:pointer; }
+h1,h2,h3,.display{ font-family:"Baloo 2","Hind Siliguri",sans-serif; }
+img{max-width:100%}
+.wrap{ max-width:1060px; margin:0 auto; padding:0 16px 110px; }
+
+/* ---------- top bar ---------- */
+.topbar{
+  position:sticky; top:0; z-index:40; background:var(--bg);
+  border-bottom:3px solid var(--line);
+}
+.topbar-in{ max-width:1060px; margin:0 auto; padding:10px 16px; display:flex; align-items:center; gap:10px; }
+.logo{ display:flex; align-items:center; gap:10px; font-family:"Baloo 2","Hind Siliguri",sans-serif; font-weight:800; font-size:1.25rem; color:var(--ink); background:none; border:0; padding:4px 6px; }
+.logo-badge{ width:42px; height:42px; border-radius:13px; background:var(--brand); color:#fff; display:grid; place-items:center; font-size:1.35rem; box-shadow:0 4px 0 var(--brand-dark); }
+.logo small{ display:block; font-size:.68rem; font-weight:600; color:var(--ink-soft); letter-spacing:.04em; }
+.top-actions{ margin-left:auto; display:flex; align-items:center; gap:8px; }
+.star-pill{ display:flex; align-items:center; gap:6px; background:var(--card); border:2px solid var(--line); border-radius:999px; padding:6px 14px 6px 10px; font-weight:700; font-size:1.05rem; }
+.star-pill .st{ color:var(--amber); font-size:1.2rem; }
+.icon-btn{ width:44px; height:44px; border-radius:14px; border:2px solid var(--line); background:var(--card); font-size:1.2rem; display:grid; place-items:center; color:var(--ink); }
+.icon-btn:active{ transform:translateY(2px); }
+.install-btn{ display:none; align-items:center; gap:7px; background:var(--teal); color:#fff; border:0; border-radius:14px; padding:10px 16px; font-weight:700; font-size:.95rem; box-shadow:0 4px 0 #00796B; }
+.install-btn.show{ display:inline-flex; }
+.install-btn:active{ transform:translateY(2px); box-shadow:0 2px 0 #00796B; }
+
+/* ---------- hero ---------- */
+.hero{ margin-top:20px; background:var(--brand); border-radius:28px; padding:26px 24px; color:#fff; position:relative; overflow:hidden; box-shadow:var(--shadow); }
+.hero::after{ content:""; position:absolute; right:-50px; top:-50px; width:190px; height:190px; border-radius:50%; background:var(--amber); opacity:.9; }
+.hero::before{ content:""; position:absolute; right:70px; bottom:-70px; width:130px; height:130px; border-radius:50%; background:var(--teal); opacity:.85; }
+.hero h1{ margin:0 0 6px; font-size:clamp(1.6rem,5vw,2.4rem); line-height:1.15; position:relative; z-index:1; }
+.hero p{ margin:0 0 16px; font-size:1.05rem; opacity:.94; max-width:34em; position:relative; z-index:1; }
+.hero-cta{ position:relative; z-index:1; display:flex; flex-wrap:wrap; gap:10px; }
+.btn{ border:0; border-radius:16px; padding:12px 22px; font-weight:700; font-size:1.02rem; display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
+.btn:active{ transform:translateY(2px); }
+.btn-amber{ background:var(--amber); color:#3A2A00; box-shadow:0 4px 0 #D98E00; }
+.btn-white{ background:#fff; color:var(--brand-dark); box-shadow:0 4px 0 rgba(0,0,0,.18); }
+.btn-brand{ background:var(--brand); color:#fff; box-shadow:0 4px 0 var(--brand-dark); }
+.btn-teal{ background:var(--teal); color:#fff; box-shadow:0 4px 0 #00796B; }
+.btn-ghost{ background:var(--card); color:var(--ink); border:2px solid var(--line); box-shadow:none; }
+
+/* ---------- sections & grids ---------- */
+.sec-head{ display:flex; align-items:baseline; gap:10px; margin:30px 2px 14px; }
+.sec-head h2{ margin:0; font-size:1.45rem; }
+.sec-head span{ color:var(--ink-soft); font-weight:600; font-size:.95rem; }
+.cat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px; }
+.cat-card{ background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:18px 12px 14px; text-align:center; box-shadow:var(--shadow); transition:transform .12s ease; width:100%; color:var(--ink); }
+.cat-card:hover{ transform:translateY(-3px); }
+.cat-card:active{ transform:translateY(1px); }
+.cat-emoji{ font-size:2.7rem; line-height:1.1; display:block; }
+.cat-name{ font-weight:700; font-size:1.08rem; margin-top:8px; display:block; }
+.cat-sub{ color:var(--ink-soft); font-size:.85rem; font-weight:600; display:block; }
+.cat-prog{ height:9px; background:var(--bg2); border-radius:99px; margin-top:10px; overflow:hidden; }
+.cat-prog i{ display:block; height:100%; border-radius:99px; }
+.game-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(210px,1fr)); gap:14px; }
+.game-card{ border:0; border-radius:var(--radius); padding:20px; text-align:left; color:#fff; box-shadow:var(--shadow); width:100%; }
+.game-card .g-emoji{ font-size:2.4rem; display:block; margin-bottom:8px; }
+.game-card b{ font-size:1.2rem; display:block; font-family:"Baloo 2","Hind Siliguri",sans-serif; }
+.game-card span{ opacity:.92; font-size:.92rem; font-weight:600; }
+
+/* daily challenge */
+.daily{ margin-top:22px; background:var(--card); border:2px dashed var(--amber); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); }
+.daily h3{ margin:0 0 4px; font-size:1.25rem; }
+.daily p{ margin:0 0 12px; color:var(--ink-soft); font-weight:600; }
+.task-list{ list-style:none; margin:0 0 14px; padding:0; display:grid; gap:8px; }
+.task-list li{ display:flex; align-items:center; gap:10px; background:var(--bg); border:2px solid var(--line); border-radius:14px; padding:10px 14px; font-weight:600; }
+.task-list li .box{ width:26px; height:26px; border-radius:8px; border:2.5px solid var(--ink-soft); display:grid; place-items:center; flex:none; color:#fff; font-size:.95rem; }
+.task-list li.done .box{ background:var(--teal); border-color:var(--teal); }
+.task-list li.done .t{ text-decoration:line-through; opacity:.65; }
+.task-list li button{ margin-left:auto; }
+
+/* ---------- views ---------- */
+.view{ display:none; }
+.view.active{ display:block; animation:pop .25s ease; }
+@keyframes pop{ from{ opacity:0; transform:translateY(8px);} to{ opacity:1; transform:none;} }
+.view-head{ display:flex; align-items:center; gap:12px; margin:20px 0 6px; flex-wrap:wrap; }
+.view-head h2{ margin:0; font-size:1.6rem; }
+.view-head .sub{ color:var(--ink-soft); font-weight:600; width:100%; margin-top:-2px; }
+.back-btn{ background:var(--card); border:2px solid var(--line); border-radius:14px; padding:9px 16px; font-weight:700; font-size:1rem; color:var(--ink); box-shadow:0 3px 0 var(--line); }
+.back-btn:active{ transform:translateY(2px); box-shadow:none; }
+.seg{ display:inline-flex; background:var(--card); border:2px solid var(--line); border-radius:14px; padding:4px; gap:4px; flex-wrap:wrap; }
+.seg button{ border:0; background:transparent; border-radius:10px; padding:8px 16px; font-weight:700; color:var(--ink-soft); font-size:.98rem; }
+.seg button.on{ background:var(--brand); color:#fff; }
+
+/* learn cards */
+.learn-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; margin-top:16px; }
+.learn-card{ background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:16px 8px 12px; text-align:center; box-shadow:var(--shadow); color:var(--ink); position:relative; width:100%; }
+.learn-card:active{ transform:scale(.97); }
+.learn-card .big{ font-size:3rem; line-height:1.15; display:block; font-family:"Baloo 2","Hind Siliguri",sans-serif; font-weight:800; }
+.learn-card .em{ font-size:2.2rem; display:block; line-height:1.2; }
+.learn-card .wbn{ font-weight:700; font-size:1.05rem; display:block; margin-top:4px; }
+.learn-card .wen{ color:var(--ink-soft); font-weight:600; font-size:.9rem; display:block; }
+.learn-card .done-tick{ position:absolute; top:8px; right:10px; background:var(--teal); color:#fff; width:24px; height:24px; border-radius:50%; display:none; place-items:center; font-size:.8rem; }
+.learn-card.learned .done-tick{ display:grid; }
+.learn-card.learned{ border-color:var(--teal); }
+.swatch{ width:74px; height:74px; border-radius:50%; margin:4px auto 2px; border:4px solid var(--line); display:block; }
+.shapebox{ height:84px; display:grid; place-items:center; }
+.dots{ display:block; font-size:.8rem; letter-spacing:2px; color:var(--amber); min-height:1em; }
+
+/* detail overlay */
+.overlay{ position:fixed; inset:0; background:rgba(14,20,36,.55); z-index:60; display:none; align-items:center; justify-content:center; padding:16px; }
+.overlay.open{ display:flex; }
+.sheet{ background:var(--card); border-radius:28px; max-width:440px; width:100%; padding:28px 22px 22px; text-align:center; box-shadow:var(--shadow); max-height:92vh; overflow:auto; }
+.sheet .big{ font-size:6rem; line-height:1.1; font-family:"Baloo 2","Hind Siliguri",sans-serif; font-weight:800; }
+.sheet .em{ font-size:4.4rem; display:block; }
+.sheet h3{ margin:8px 0 2px; font-size:1.7rem; }
+.sheet .en{ color:var(--ink-soft); font-weight:700; font-size:1.15rem; margin:0 0 16px; }
+.sheet .row{ display:flex; gap:10px; justify-content:center; flex-wrap:wrap; }
+.speak-btn{ background:var(--amber); color:#3A2A00; border:0; border-radius:16px; padding:12px 20px; font-weight:800; font-size:1.05rem; box-shadow:0 4px 0 #D98E00; }
+.speak-btn.en{ background:var(--sky); color:#fff; box-shadow:0 4px 0 #2B78B5; }
+.speak-btn:active{ transform:translateY(2px); }
+.nav-row{ display:flex; justify-content:space-between; margin-top:18px; }
+
+/* flash cards */
+.flash-stage{ margin-top:18px; display:flex; flex-direction:column; align-items:center; gap:16px; }
+.flash-card{ width:min(340px,88vw); height:400px; perspective:900px; background:none; border:0; padding:0; }
+.flash-in{ position:relative; width:100%; height:100%; transition:transform .5s; transform-style:preserve-3d; }
+.flash-card.flipped .flash-in{ transform:rotateY(180deg); }
+.flash-face{ position:absolute; inset:0; backface-visibility:hidden; -webkit-backface-visibility:hidden; background:var(--card); border:3px solid var(--line); border-radius:28px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; box-shadow:var(--shadow); padding:16px; }
+.flash-face.back{ transform:rotateY(180deg); }
+.flash-face .big{ font-size:6.4rem; font-weight:800; font-family:"Baloo 2","Hind Siliguri",sans-serif; line-height:1.05; }
+.flash-face .em{ font-size:5rem; }
+.flash-face .wbn{ font-size:1.8rem; font-weight:700; }
+.flash-face .wen{ font-size:1.2rem; color:var(--ink-soft); font-weight:700; }
+.flash-face .hint{ color:var(--ink-soft); font-weight:600; font-size:.9rem; }
+.flash-nav{ display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:center; }
+.flash-count{ font-weight:700; color:var(--ink-soft); min-width:64px; text-align:center; }
+
+/* tracing */
+.trace-wrap{ margin-top:16px; display:flex; flex-direction:column; align-items:center; gap:14px; }
+.trace-box{ position:relative; width:min(360px,92vw); aspect-ratio:1; background:var(--card); border:3px solid var(--line); border-radius:24px; overflow:hidden; box-shadow:var(--shadow); }
+.trace-box canvas{ position:absolute; inset:0; width:100%; height:100%; touch-action:none; }
+.trace-guide{ position:absolute; inset:0; display:grid; place-items:center; font-size:min(230px,58vw); font-family:"Baloo 2","Hind Siliguri",sans-serif; font-weight:800; color:var(--ink); opacity:.13; pointer-events:none; user-select:none; }
+.trace-grid-bg{ position:absolute; inset:0; pointer-events:none; background:
+  linear-gradient(var(--line) 2px, transparent 2px) 0 50%/100% 2px no-repeat,
+  linear-gradient(90deg, var(--line) 2px, transparent 2px) 50% 0/2px 100% no-repeat; opacity:.6; }
+.color-dots{ display:flex; gap:8px; }
+.color-dots button{ width:40px; height:40px; min-height:40px; border-radius:50%; border:3px solid var(--card); box-shadow:0 0 0 2px var(--line); padding:0; }
+.color-dots button.on{ box-shadow:0 0 0 3px var(--ink); }
+
+/* quiz */
+.quiz-box{ margin-top:16px; background:var(--card); border:2px solid var(--line); border-radius:28px; padding:24px 20px; box-shadow:var(--shadow); text-align:center; }
+.quiz-prog{ height:12px; background:var(--bg2); border-radius:99px; overflow:hidden; margin-bottom:18px; }
+.quiz-prog i{ display:block; height:100%; background:var(--teal); border-radius:99px; transition:width .3s; }
+.quiz-q{ font-size:1.3rem; font-weight:700; margin:0 0 6px; }
+.quiz-big{ font-size:5.2rem; line-height:1.15; font-family:"Baloo 2","Hind Siliguri",sans-serif; font-weight:800; }
+.quiz-big .em{ font-size:5.2rem; }
+.quiz-opts{ display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:18px; }
+.quiz-opt{ background:var(--bg); border:3px solid var(--line); border-radius:18px; padding:14px 8px; font-size:1.15rem; font-weight:700; color:var(--ink); min-height:64px; }
+.quiz-opt .em{ font-size:2.4rem; display:block; }
+.quiz-opt.right{ background:#E4F7E1; border-color:var(--green); }
+.quiz-opt.wrong{ background:#FFE7E3; border-color:var(--coral); }
+.quiz-opt:disabled{ opacity:.85; }
+.quiz-fb{ min-height:2rem; font-size:1.25rem; font-weight:800; margin-top:14px; }
+.score-big{ font-size:3.4rem; font-weight:800; font-family:"Baloo 2",sans-serif; }
+.stars-row{ font-size:2.2rem; color:var(--line); letter-spacing:6px; }
+.stars-row .on{ color:var(--amber); }
+
+/* memory */
+.mem-grid{ display:grid; grid-template-columns:repeat(4,1fr); gap:10px; margin-top:16px; max-width:520px; margin-inline:auto; }
+.mem-card{ aspect-ratio:1; border:0; border-radius:18px; background:var(--brand); color:#fff; font-size:2rem; display:grid; place-items:center; box-shadow:0 4px 0 var(--brand-dark); padding:0; }
+.mem-card .face{ display:none; font-size:clamp(1.8rem,8vw,2.6rem); }
+.mem-card.open,.mem-card.matched{ background:var(--card); border:2px solid var(--line); box-shadow:var(--shadow); }
+.mem-card.open .face,.mem-card.matched .face{ display:block; }
+.mem-card.open .back-q,.mem-card.matched .back-q{ display:none; }
+.mem-card.matched{ border-color:var(--teal); }
+.mem-stats{ display:flex; gap:10px; justify-content:center; margin-top:14px; flex-wrap:wrap; }
+.chip{ background:var(--card); border:2px solid var(--line); border-radius:999px; padding:7px 16px; font-weight:700; }
+
+/* puzzle */
+.puzzle-stage{ margin-top:16px; text-align:center; }
+.puzzle-q{ font-size:1.35rem; font-weight:700; }
+.puzzle-row{ display:flex; gap:10px; justify-content:center; margin:18px 0; flex-wrap:wrap; }
+.puzzle-cell{ width:76px; height:76px; border-radius:18px; background:var(--card); border:3px solid var(--line); display:grid; place-items:center; font-size:2.3rem; font-weight:800; font-family:"Baloo 2","Hind Siliguri",sans-serif; }
+.puzzle-cell.q{ border-style:dashed; border-color:var(--amber); color:var(--amber); background:var(--bg2); }
+.puzzle-opts{ display:flex; gap:12px; justify-content:center; flex-wrap:wrap; }
+.puzzle-opt{ width:76px; height:76px; border-radius:18px; background:var(--card); border:3px solid var(--line); font-size:2.3rem; font-weight:800; font-family:"Baloo 2","Hind Siliguri",sans-serif; color:var(--ink); }
+.puzzle-opt.right{ border-color:var(--green); background:#E4F7E1; }
+.puzzle-opt.wrong{ border-color:var(--coral); background:#FFE7E3; }
+
+/* rewards */
+.badge-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(140px,1fr)); gap:14px; margin-top:16px; }
+.badge{ background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:18px 10px; text-align:center; box-shadow:var(--shadow); }
+.badge .b-em{ font-size:2.6rem; display:block; filter:grayscale(1); opacity:.35; }
+.badge.earned .b-em{ filter:none; opacity:1; }
+.badge b{ display:block; margin-top:6px; font-size:1rem; }
+.badge span{ color:var(--ink-soft); font-size:.82rem; font-weight:600; display:block; }
+.badge.earned{ border-color:var(--amber); }
+.level-card{ margin-top:16px; background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); text-align:center; }
+.level-card .lvl{ font-size:2rem; font-weight:800; font-family:"Baloo 2","Hind Siliguri",sans-serif; }
+
+/* parent dashboard */
+.stat-grid{ display:grid; grid-template-columns:repeat(auto-fill,minmax(150px,1fr)); gap:14px; margin-top:16px; }
+.stat{ background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:18px 14px; text-align:center; box-shadow:var(--shadow); }
+.stat .n{ font-size:2rem; font-weight:800; font-family:"Baloo 2",sans-serif; display:block; }
+.stat .l{ color:var(--ink-soft); font-weight:700; font-size:.92rem; }
+.prog-row{ display:grid; grid-template-columns:110px 1fr 52px; align-items:center; gap:10px; margin-top:10px; font-weight:700; }
+.prog-row .bar{ height:14px; background:var(--bg2); border-radius:99px; overflow:hidden; }
+.prog-row .bar i{ display:block; height:100%; border-radius:99px; }
+.panel{ background:var(--card); border:2px solid var(--line); border-radius:var(--radius); padding:20px; box-shadow:var(--shadow); margin-top:16px; }
+.panel h3{ margin:0 0 8px; font-size:1.2rem; }
+
+/* settings */
+.set-row{ display:flex; align-items:center; gap:12px; padding:14px 0; border-bottom:2px solid var(--line); flex-wrap:wrap; }
+.set-row:last-child{ border-bottom:0; }
+.set-row .lab{ font-weight:700; font-size:1.05rem; }
+.set-row .desc{ color:var(--ink-soft); font-weight:600; font-size:.88rem; display:block; }
+.set-row .ctl{ margin-left:auto; }
+.switch{ position:relative; width:60px; height:36px; flex:none; }
+.switch input{ position:absolute; opacity:0; width:100%; height:100%; margin:0; cursor:pointer; }
+.switch .tr{ position:absolute; inset:0; background:var(--line); border-radius:99px; transition:.2s; pointer-events:none; }
+.switch .tr::after{ content:""; position:absolute; top:4px; left:4px; width:28px; height:28px; border-radius:50%; background:#fff; transition:.2s; box-shadow:0 2px 6px rgba(0,0,0,.25); }
+.switch input:checked + .tr{ background:var(--teal); }
+.switch input:checked + .tr::after{ left:28px; }
+.switch input:focus-visible + .tr{ outline:3px solid var(--sky); outline-offset:2px; }
+
+/* bottom nav */
+.bottomnav{ position:fixed; left:0; right:0; bottom:0; z-index:40; background:var(--card); border-top:3px solid var(--line); padding-bottom:env(safe-area-inset-bottom); }
+.bottomnav-in{ max-width:560px; margin:0 auto; display:grid; grid-template-columns:repeat(5,1fr); }
+.bottomnav button{ background:none; border:0; padding:9px 2px 7px; font-size:.78rem; font-weight:700; color:var(--ink-soft); display:flex; flex-direction:column; align-items:center; gap:2px; min-height:56px; }
+.bottomnav button .ni{ font-size:1.45rem; }
+.bottomnav button.on{ color:var(--brand); }
+html[data-theme="dark"] .bottomnav button.on{ color:#A5B4FF; }
+
+/* toast */
+.toast{ position:fixed; left:50%; bottom:86px; transform:translateX(-50%) translateY(20px); background:var(--ink); color:var(--bg); padding:12px 20px; border-radius:16px; font-weight:700; z-index:80; opacity:0; pointer-events:none; transition:.25s; max-width:92vw; text-align:center; box-shadow:var(--shadow); }
+.toast.show{ opacity:1; transform:translateX(-50%); }
+.badge-toast{ position:fixed; top:70px; left:50%; transform:translateX(-50%) translateY(-16px); background:var(--amber); color:#3A2A00; padding:12px 22px; border-radius:16px; font-weight:800; z-index:80; opacity:0; pointer-events:none; transition:.25s; box-shadow:var(--shadow); text-align:center; }
+.badge-toast.show{ opacity:1; transform:translateX(-50%); }
+
+.confetti{ position:fixed; inset:0; pointer-events:none; z-index:90; overflow:hidden; }
+.confetti i{ position:absolute; top:-16px; width:11px; height:16px; border-radius:3px; animation:fall linear forwards; }
+@keyframes fall{ to{ transform:translateY(105vh) rotate(560deg); } }
+.shake{ animation:shake .35s; }
+@keyframes shake{ 0%,100%{transform:none} 25%{transform:translateX(-6px)} 75%{transform:translateX(6px)} }
+.bounce-in{ animation:bin .45s ease; }
+@keyframes bin{ 0%{transform:scale(.6); opacity:0} 60%{transform:scale(1.08)} 100%{transform:scale(1); opacity:1} }
+@media (prefers-reduced-motion: reduce){
+  *,*::before,*::after{ animation-duration:.01ms !important; transition-duration:.01ms !important; }
+}
+@media (max-width:560px){
+  .cat-grid{ grid-template-columns:repeat(auto-fill,minmax(108px,1fr)); gap:10px; }
+  .learn-grid{ grid-template-columns:repeat(auto-fill,minmax(104px,1fr)); gap:10px; }
+  .mem-grid{ grid-template-columns:repeat(3,1fr); }
+  .logo small{ display:none; }
+  .hero{ padding:22px 18px; }
+  .prog-row{ grid-template-columns:86px 1fr 46px; font-size:.9rem; }
+}
+</style>
+</head>
+<body>
+
+<header class="topbar">
+  <div class="topbar-in">
+    <button class="logo" id="logoBtn" aria-label="AEUN Kids – home">
+      <span class="logo-badge" aria-hidden="true">অ</span>
+      <span>AEUN Kids<small>LEARN &amp; PLAY</small></span>
+    </button>
+    <div class="top-actions">
+      <button class="install-btn" id="installBtn" type="button">⬇️ Install App</button>
+      <div class="star-pill" role="status" aria-label="Stars earned"><span class="st" aria-hidden="true">★</span><span id="starCount">0</span></div>
+      <button class="icon-btn" id="themeBtn" type="button" aria-label="Dark / light mode">🌙</button>
+      <button class="icon-btn" id="parentBtn" type="button" aria-label="Parent dashboard">👨‍👩‍👧</button>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ============ HOME ============ -->
+  <section class="view active" id="view-home" aria-label="Home">
+    <div class="hero">
+      <h1>মজায় মজায় শিখি!<br />Let&rsquo;s Learn &amp; Play! 🎉</h1>
+      <p>বাংলা ও English বর্ণমালা, সংখ্যা, রং, পশুপাখি আর মজার গেম — ২–৭ বছরের ছোট্ট শিক্ষার্থীদের জন্য।</p>
+      <div class="hero-cta">
+        <button class="btn btn-amber" data-goto="learn" data-cat="bn-alpha">অ আ শিখি →</button>
+        <button class="btn btn-white" data-goto="learn" data-cat="en-alpha">ABC শিখি →</button>
+      </div>
+    </div>
+
+    <div class="daily" id="dailyBox" aria-label="Daily challenge"></div>
+
+    <div class="sec-head"><h2>শেখার বিষয়</h2><span>Learning Topics</span></div>
+    <div class="cat-grid" id="catGrid"></div>
+
+    <div class="sec-head"><h2>খেলা আর অনুশীলন</h2><span>Games &amp; Practice</span></div>
+    <div class="game-grid">
+      <button class="game-card" style="background:var(--teal)" data-goto="quiz"><span class="g-emoji" aria-hidden="true">🧠</span><b>কুইজ খেলা</b><span>Quiz Game — প্রশ্নের উত্তর দিয়ে তারা জেতো</span></button>
+      <button class="game-card" style="background:var(--pink)" data-goto="memory"><span class="g-emoji" aria-hidden="true">🃏</span><b>মেমরি গেম</b><span>Memory Game — জোড়া মেলাও</span></button>
+      <button class="game-card" style="background:var(--sky)" data-goto="trace"><span class="g-emoji" aria-hidden="true">✏️</span><b>লেখা শিখি</b><span>Tracing — আঙুল দিয়ে অক্ষর আঁকো</span></button>
+      <button class="game-card" style="background:var(--coral)" data-goto="puzzle"><span class="g-emoji" aria-hidden="true">🧩</span><b>ধাঁধা</b><span>Puzzle — কোনটা মিলবে বলো তো?</span></button>
+      <button class="game-card" style="background:var(--green)" data-goto="flash" data-cat="animals"><span class="g-emoji" aria-hidden="true">🎴</span><b>ফ্ল্যাশ কার্ড</b><span>Flash Cards — কার্ড উল্টে শেখো</span></button>
+      <button class="game-card" style="background:var(--amber);color:#3A2A00" data-goto="rewards"><span class="g-emoji" aria-hidden="true">🏆</span><b>আমার পুরস্কার</b><span>My Rewards — তারা আর ব্যাজ দেখো</span></button>
+    </div>
+  </section>
+
+  <!-- ============ LEARN ============ -->
+  <section class="view" id="view-learn" aria-label="Learn">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← <span data-t="back">ফিরে যাই</span></button>
+      <h2 id="learnTitle">শিখি</h2>
+      <span style="margin-left:auto" class="seg" role="group" aria-label="View mode">
+        <button id="modeCards" class="on" type="button">কার্ড</button>
+        <button id="modeFlash" type="button">ফ্ল্যাশ কার্ড</button>
+      </span>
+      <span class="sub" id="learnSub"></span>
+    </div>
+    <div id="learnGridWrap"><div class="learn-grid" id="learnGrid"></div></div>
+    <div id="flashWrap" hidden></div>
+  </section>
+
+  <!-- ============ TRACE ============ -->
+  <section class="view" id="view-trace" aria-label="Tracing">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← ফিরে যাই</button>
+      <h2>✏️ লেখা শিখি <span style="font-size:1rem;color:var(--ink-soft)">Tracing</span></h2>
+      <span class="sub">হালকা অক্ষরটার উপর আঙুল বা মাউস দিয়ে আঁকো — হাতের লেখা সুন্দর হবে!</span>
+    </div>
+    <div style="margin-top:14px" class="seg" role="group" aria-label="Letter set" id="traceSeg">
+      <button data-set="bn" class="on" type="button">বাংলা অক্ষর</button>
+      <button data-set="en" type="button">English ABC</button>
+      <button data-set="num" type="button">সংখ্যা ১২৩</button>
+    </div>
+    <div class="trace-wrap">
+      <div class="trace-box">
+        <div class="trace-grid-bg"></div>
+        <div class="trace-guide" id="traceGuide">অ</div>
+        <canvas id="traceCanvas" width="720" height="720" aria-label="Tracing canvas"></canvas>
+      </div>
+      <div class="color-dots" id="traceColors" role="group" aria-label="Pencil color"></div>
+      <div class="flash-nav">
+        <button class="btn btn-ghost" id="tracePrev" type="button">← আগের</button>
+        <button class="btn btn-ghost" id="traceClear" type="button">🧹 মুছে ফেলি</button>
+        <button class="btn btn-teal" id="traceDone" type="button">হয়ে গেছে! ★</button>
+        <button class="btn btn-ghost" id="traceNext" type="button">পরের →</button>
+      </div>
+      <p style="color:var(--ink-soft);font-weight:600;margin:0" id="traceWord"></p>
+    </div>
+  </section>
+
+  <!-- ============ QUIZ ============ -->
+  <section class="view" id="view-quiz" aria-label="Quiz">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← ফিরে যাই</button>
+      <h2>🧠 কুইজ খেলা <span style="font-size:1rem;color:var(--ink-soft)">Quiz</span></h2>
+      <span class="sub">সঠিক উত্তর বেছে নাও — প্রতিটা সঠিক উত্তরে পাবে তারা!</span>
+    </div>
+    <div class="quiz-box" id="quizBox"></div>
+  </section>
+
+  <!-- ============ MEMORY ============ -->
+  <section class="view" id="view-memory" aria-label="Memory game">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← ফিরে যাই</button>
+      <h2>🃏 মেমরি গেম <span style="font-size:1rem;color:var(--ink-soft)">Memory</span></h2>
+      <span class="sub">কার্ড উল্টে একই ছবির জোড়া মেলাও!</span>
+    </div>
+    <div class="mem-stats">
+      <span class="chip">চাল: <b id="memMoves">0</b></span>
+      <span class="chip">জোড়া: <b id="memPairs">0</b> / 6</span>
+      <span class="chip">সময়: <b id="memTime">0:00</b></span>
+      <button class="btn btn-brand" id="memRestart" type="button" style="padding:8px 18px">🔄 আবার খেলি</button>
+    </div>
+    <div class="mem-grid" id="memGrid"></div>
+    <p class="quiz-fb" id="memMsg" style="text-align:center"></p>
+  </section>
+
+  <!-- ============ PUZZLE ============ -->
+  <section class="view" id="view-puzzle" aria-label="Puzzle">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← ফিরে যাই</button>
+      <h2>🧩 ধাঁধা <span style="font-size:1rem;color:var(--ink-soft)">Puzzle</span></h2>
+      <span class="sub">ফাঁকা জায়গায় কোনটা বসবে, বলো তো?</span>
+    </div>
+    <div class="quiz-box"><div class="puzzle-stage" id="puzzleStage"></div></div>
+  </section>
+
+  <!-- ============ REWARDS ============ -->
+  <section class="view" id="view-rewards" aria-label="Rewards">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← ফিরে যাই</button>
+      <h2>🏆 আমার পুরস্কার <span style="font-size:1rem;color:var(--ink-soft)">Rewards</span></h2>
+    </div>
+    <div class="level-card">
+      <div style="font-size:2.6rem" aria-hidden="true">⭐</div>
+      <div class="lvl" id="levelName">ছোট্ট শিক্ষার্থী</div>
+      <p style="margin:4px 0 10px;color:var(--ink-soft);font-weight:700">মোট তারা: <b id="rewardStars">0</b> ★ &nbsp;•&nbsp; পরের লেভেল পর্যন্ত আর <b id="starsToNext">10</b>টা</p>
+      <div class="quiz-prog" style="max-width:420px;margin:0 auto"><i id="levelBar" style="width:0%"></i></div>
+    </div>
+    <div class="sec-head"><h2>ব্যাজসমূহ</h2><span>Badges</span></div>
+    <div class="badge-grid" id="badgeGrid"></div>
+  </section>
+
+  <!-- ============ PARENT ============ -->
+  <section class="view" id="view-parent" aria-label="Parent dashboard">
+    <div class="view-head">
+      <button class="back-btn" data-goto="home">← ফিরে যাই</button>
+      <h2>👨‍👩‍👧 অভিভাবক ড্যাশবোর্ড</h2>
+      <span class="sub">Parent Dashboard — এই সেশনে আপনার শিশুর শেখার অগ্রগতি</span>
+    </div>
+    <div class="stat-grid" id="statGrid"></div>
+    <div class="panel">
+      <h3>বিষয় অনুযায়ী অগ্রগতি</h3>
+      <div id="progList"></div>
+    </div>
+    <div class="panel">
+      <h3>⚙️ সেটিংস · Settings</h3>
+      <div class="set-row">
+        <div><span class="lab">ভাষা · Language</span><span class="desc">কার্ডে কোন ভাষা দেখাবে</span></div>
+        <div class="ctl seg" id="langSeg" role="group" aria-label="Language">
+          <button data-lang="both" class="on" type="button">দুটোই</button>
+          <button data-lang="bn" type="button">বাংলা</button>
+          <button data-lang="en" type="button">English</button>
+        </div>
+      </div>
+      <div class="set-row">
+        <div><span class="lab">শব্দ · Sound</span><span class="desc">সঠিক/ভুল উত্তরের শব্দ আর উচ্চারণ</span></div>
+        <div class="ctl"><label class="switch"><input type="checkbox" id="soundToggle" checked /><span class="tr"></span></label></div>
+      </div>
+      <div class="set-row">
+        <div><span class="lab">ধীরে উচ্চারণ · Slow speech</span><span class="desc">ছোট বাচ্চাদের জন্য আস্তে আস্তে বলা</span></div>
+        <div class="ctl"><label class="switch"><input type="checkbox" id="slowToggle" /><span class="tr"></span></label></div>
+      </div>
+      <div class="set-row">
+        <div><span class="lab">ডার্ক মোড · Dark mode</span><span class="desc">চোখের জন্য আরামদায়ক গাঢ় রং</span></div>
+        <div class="ctl"><label class="switch"><input type="checkbox" id="darkToggle" /><span class="tr"></span></label></div>
+      </div>
+      <div class="set-row">
+        <div><span class="lab">অ্যাপ ইনস্টল · Install app</span><span class="desc">হোম স্ক্রিনে যোগ করলে ইন্টারনেট ছাড়াও চলবে</span></div>
+        <div class="ctl"><button class="btn btn-teal" id="installBtn2" type="button" style="padding:9px 18px">⬇️ Install</button></div>
+      </div>
+      <div class="set-row">
+        <div><span class="lab">অগ্রগতি মুছে ফেলুন</span><span class="desc">এই সেশনের তারা, ব্যাজ আর শেখা হিসাব আবার শুরু হবে</span></div>
+        <div class="ctl"><button class="btn btn-ghost" id="resetBtn" type="button" style="padding:9px 18px">Reset</button></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<!-- item detail -->
+<div class="overlay" id="detailOverlay" role="dialog" aria-modal="true" aria-label="Item detail">
+  <div class="sheet" id="detailSheet"></div>
+</div>
+
+<!-- install help -->
+<div class="overlay" id="installOverlay" role="dialog" aria-modal="true" aria-label="Install help">
+  <div class="sheet" style="text-align:left">
+    <h3 style="text-align:center;margin-top:0">📲 অ্যাপটা ইনস্টল করুন</h3>
+    <div id="installHelpText" style="font-weight:600;line-height:1.65"></div>
+    <div class="row" style="display:flex;justify-content:center;margin-top:16px">
+      <button class="btn btn-brand" id="installClose" type="button">বুঝেছি!</button>
+    </div>
+  </div>
+</div>
+
+<nav class="bottomnav" aria-label="Main">
+  <div class="bottomnav-in">
+    <button data-goto="home" class="on" type="button"><span class="ni" aria-hidden="true">🏠</span>বাড়ি</button>
+    <button data-goto="learn" data-cat="bn-alpha" type="button"><span class="ni" aria-hidden="true">📚</span>শিখি</button>
+    <button data-goto="quiz" type="button"><span class="ni" aria-hidden="true">🧠</span>কুইজ</button>
+    <button data-goto="memory" type="button"><span class="ni" aria-hidden="true">🃏</span>গেম</button>
+    <button data-goto="rewards" type="button"><span class="ni" aria-hidden="true">🏆</span>পুরস্কার</button>
+  </div>
+</nav>
+
+<div class="toast" id="toast" role="status"></div>
+<div class="badge-toast" id="badgeToast" role="status"></div>
+<div class="confetti" id="confetti" aria-hidden="true"></div>
+
+<script>
+"use strict";
+/* ==================== DATA ==================== */
+const PALETTE = ["#FF6B5E","#FFB020","#00A88F","#3E9BDC","#F06595","#51B04C","#4F46E5","#FF8A3D"];
+const L = (d,bn,en,em,extra)=>Object.assign({d,bn,en,em:em||""},extra||{});
+const W = (em,bn,en)=>({d:em,kind:"word",bn,en,em});
+const CATS = [
+ {id:"bn-alpha", icon:"অ", bn:"বাংলা বর্ণমালা", en:"Bangla Alphabet", color:"#4F46E5", sub:"স্বরবর্ণ ও ব্যঞ্জনবর্ণ", items:[
+   L("অ","অজগর","Snake","🐍"),L("আ","আম","Mango","🥭"),L("ই","ইঁদুর","Rat","🐀"),L("ঈ","ঈগল","Eagle","🦅"),
+   L("উ","উট","Camel","🐪"),L("ঊ","ঊষা","Dawn","🌅"),L("ঋ","ঋষি","Sage","🧙"),L("এ","একতারা","Ektara","🎸"),
+   L("ঐ","ঐরাবত","Elephant","🐘"),L("ও","ওল","Yam","🍠"),L("ঔ","ঔষধ","Medicine","💊"),
+   L("ক","কলা","Banana","🍌"),L("খ","খরগোশ","Rabbit","🐰"),L("গ","গরু","Cow","🐄"),L("ঘ","ঘোড়া","Horse","🐴"),
+   L("ঙ","ব্যাঙ","Frog","🐸"),L("চ","চাঁদ","Moon","🌙"),L("ছ","ছাতা","Umbrella","☂️"),L("জ","জাহাজ","Ship","🚢"),
+   L("ঝ","ঝুড়ি","Basket","🧺"),L("ট","টমেটো","Tomato","🍅"),L("ঠ","ঠেলাগাড়ি","Cart","🛒"),L("ড","ডিম","Egg","🥚"),
+   L("ঢ","ঢাক","Drum","🥁"),L("ত","তরমুজ","Watermelon","🍉"),L("থ","থালা","Plate","🍽️"),L("দ","দাঁত","Teeth","🦷"),
+   L("ধ","ধান","Paddy","🌾"),L("ন","নদী","River","🏞️"),L("প","পাখি","Bird","🐦"),L("ফ","ফুল","Flower","🌸"),
+   L("ব","বই","Book","📖"),L("ভ","ভালুক","Bear","🐻"),L("ম","মাছ","Fish","🐟"),L("য","যব","Barley","🌾"),
+   L("র","রুটি","Bread","🍞"),L("ল","লেবু","Lemon","🍋"),L("শ","শসা","Cucumber","🥒"),L("স","সিংহ","Lion","🦁"),
+   L("হ","হাঁস","Duck","🦆")
+ ]},
+ {id:"en-alpha", icon:"Aa", bn:"English বর্ণমালা", en:"English Alphabet", color:"#3E9BDC", sub:"A থেকে Z", items:[
+   L("A","আপেল","Apple","🍎"),L("B","বল","Ball","⚽"),L("C","বিড়াল","Cat","🐱"),L("D","কুকুর","Dog","🐶"),
+   L("E","হাতি","Elephant","🐘"),L("F","মাছ","Fish","🐟"),L("G","ছাগল","Goat","🐐"),L("H","মুরগি","Hen","🐔"),
+   L("I","আইসক্রিম","Ice cream","🍦"),L("J","জগ","Jug","🏺"),L("K","ঘুড়ি","Kite","🪁"),L("L","সিংহ","Lion","🦁"),
+   L("M","বানর","Monkey","🐵"),L("N","নাক","Nose","👃"),L("O","কমলা","Orange","🍊"),L("P","তোতা","Parrot","🦜"),
+   L("Q","রানি","Queen","👸"),L("R","গোলাপ","Rose","🌹"),L("S","সূর্য","Sun","☀️"),L("T","বাঘ","Tiger","🐯"),
+   L("U","ছাতা","Umbrella","☂️"),L("V","বেহালা","Violin","🎻"),L("W","ঘড়ি","Watch","⌚"),L("X","এক্স-রে","X-ray","🩻"),
+   L("Y","দই","Yogurt","🍦"),L("Z","জেব্রা","Zebra","🦓")
+ ]},
+ {id:"numbers", icon:"১২৩", bn:"সংখ্যা", en:"Numbers", color:"#00A88F", sub:"১ থেকে ২০ · 1 to 20", items:[
+   L("১","এক","One 1",null,{val:1}),L("২","দুই","Two 2",null,{val:2}),L("৩","তিন","Three 3",null,{val:3}),
+   L("৪","চার","Four 4",null,{val:4}),L("৫","পাঁচ","Five 5",null,{val:5}),L("৬","ছয়","Six 6",null,{val:6}),
+   L("৭","সাত","Seven 7",null,{val:7}),L("৮","আট","Eight 8",null,{val:8}),L("৯","নয়","Nine 9",null,{val:9}),
+   L("১০","দশ","Ten 10",null,{val:10}),L("১১","এগারো","Eleven 11",null,{val:11}),L("১২","বারো","Twelve 12",null,{val:12}),
+   L("১৩","তেরো","Thirteen 13",null,{val:13}),L("১৪","চৌদ্দ","Fourteen 14",null,{val:14}),L("১৫","পনেরো","Fifteen 15",null,{val:15}),
+   L("১৬","ষোলো","Sixteen 16",null,{val:16}),L("১৭","সতেরো","Seventeen 17",null,{val:17}),L("১৮","আঠারো","Eighteen 18",null,{val:18}),
+   L("১৯","ঊনিশ","Nineteen 19",null,{val:19}),L("২০","বিশ","Twenty 20",null,{val:20})
+ ]},
+ {id:"colors", icon:"🌈", bn:"রং", en:"Colors", color:"#F06595", sub:"রঙের নাম শিখি", items:[
+   {d:"#E53935",kind:"color",bn:"লাল",en:"Red"},{d:"#FB8C00",kind:"color",bn:"কমলা",en:"Orange"},
+   {d:"#FDD835",kind:"color",bn:"হলুদ",en:"Yellow"},{d:"#43A047",kind:"color",bn:"সবুজ",en:"Green"},
+   {d:"#1E88E5",kind:"color",bn:"নীল",en:"Blue"},{d:"#8E24AA",kind:"color",bn:"বেগুনি",en:"Purple"},
+   {d:"#EC407A",kind:"color",bn:"গোলাপি",en:"Pink"},{d:"#6D4C41",kind:"color",bn:"বাদামি",en:"Brown"},
+   {d:"#212121",kind:"color",bn:"কালো",en:"Black"},{d:"#FFFFFF",kind:"color",bn:"সাদা",en:"White"},
+   {d:"#00ACC1",kind:"color",bn:"আকাশি",en:"Sky Blue"},{d:"#9E9E9E",kind:"color",bn:"ধূসর",en:"Grey"}
+ ]},
+ {id:"shapes", icon:"⭐", bn:"আকৃতি", en:"Shapes", color:"#FF8A3D", sub:"গোল, চৌকো, তারা…", items:[
+   {d:"circle",kind:"shape",bn:"বৃত্ত",en:"Circle"},{d:"square",kind:"shape",bn:"বর্গ",en:"Square"},
+   {d:"triangle",kind:"shape",bn:"ত্রিভুজ",en:"Triangle"},{d:"rectangle",kind:"shape",bn:"আয়তক্ষেত্র",en:"Rectangle"},
+   {d:"star",kind:"shape",bn:"তারা",en:"Star"},{d:"heart",kind:"shape",bn:"হৃদয়",en:"Heart"},
+   {d:"oval",kind:"shape",bn:"ডিম্বাকৃতি",en:"Oval"},{d:"diamond",kind:"shape",bn:"রম্বস",en:"Diamond"}
+ ]},
+ {id:"animals", icon:"🦁", bn:"পশু", en:"Animals", color:"#51B04C", sub:"জঙ্গল আর খামারের প্রাণী", items:[
+   W("🦁","সিংহ","Lion"),W("🐯","বাঘ","Tiger"),W("🐘","হাতি","Elephant"),W("🐄","গরু","Cow"),
+   W("🐐","ছাগল","Goat"),W("🐴","ঘোড়া","Horse"),W("🐶","কুকুর","Dog"),W("🐱","বিড়াল","Cat"),
+   W("🐵","বানর","Monkey"),W("🐻","ভালুক","Bear"),W("🦓","জেব্রা","Zebra"),W("🦒","জিরাফ","Giraffe")
+ ]},
+ {id:"birds", icon:"🦜", bn:"পাখি", en:"Birds", color:"#3E9BDC", sub:"আকাশের বন্ধুরা", items:[
+   W("🦜","তোতা","Parrot"),W("🦚","ময়ূর","Peacock"),W("🦆","হাঁস","Duck"),W("🐔","মুরগি","Hen"),
+   W("🐦","চড়ুই","Sparrow"),W("🦅","ঈগল","Eagle"),W("🦉","পেঁচা","Owl"),W("🐧","পেঙ্গুইন","Penguin"),
+   W("🦢","রাজহাঁস","Swan"),W("🕊️","কবুতর","Pigeon")
+ ]},
+ {id:"fruits", icon:"🍎", bn:"ফল", en:"Fruits", color:"#FF6B5E", sub:"মিষ্টি আর পুষ্টিকর", items:[
+   W("🍎","আপেল","Apple"),W("🍌","কলা","Banana"),W("🥭","আম","Mango"),W("🍊","কমলা","Orange"),
+   W("🍇","আঙুর","Grapes"),W("🍉","তরমুজ","Watermelon"),W("🍓","স্ট্রবেরি","Strawberry"),W("🍍","আনারস","Pineapple"),
+   W("🍐","নাশপাতি","Pear"),W("🥥","নারকেল","Coconut"),W("🍋","লেবু","Lemon"),W("🥝","কিউই","Kiwi")
+ ]},
+ {id:"vegetables", icon:"🥕", bn:"সবজি", en:"Vegetables", color:"#00A88F", sub:"সবজি খেলে শক্তি বাড়ে", items:[
+   W("🥕","গাজর","Carrot"),W("🍅","টমেটো","Tomato"),W("🥔","আলু","Potato"),W("🌽","ভুট্টা","Corn"),
+   W("🥒","শসা","Cucumber"),W("🧅","পেঁয়াজ","Onion"),W("🥦","ব্রকলি","Broccoli"),W("🍆","বেগুন","Brinjal"),
+   W("🎃","কুমড়া","Pumpkin"),W("🌶️","মরিচ","Chilli")
+ ]},
+ {id:"vehicles", icon:"🚌", bn:"যানবাহন", en:"Vehicles", color:"#FFB020", sub:"চলো ঘুরে আসি", items:[
+   W("🚌","বাস","Bus"),W("🚗","গাড়ি","Car"),W("🚂","ট্রেন","Train"),W("✈️","বিমান","Airplane"),
+   W("🚢","জাহাজ","Ship"),W("🚲","সাইকেল","Bicycle"),W("🏍️","মোটরসাইকেল","Motorcycle"),W("🚑","অ্যাম্বুলেন্স","Ambulance"),
+   W("🚒","দমকল","Fire Truck"),W("🚜","ট্রাক্টর","Tractor")
+ ]}
+];
+const CAT = id => CATS.find(c=>c.id===id);
+const SHAPE_SVG = {
+  circle:'<circle cx="40" cy="40" r="32"/>', square:'<rect x="10" y="10" width="60" height="60" rx="6"/>',
+  triangle:'<polygon points="40,8 74,70 6,70"/>', rectangle:'<rect x="4" y="20" width="72" height="42" rx="6"/>',
+  star:'<polygon points="40,4 49,30 77,30 54,47 62,74 40,58 18,74 26,47 3,30 31,30"/>',
+  heart:'<path d="M40 72 C10 50 6 28 20 16 C30 8 40 16 40 24 C40 16 50 8 60 16 C74 28 70 50 40 72Z"/>',
+  oval:'<ellipse cx="40" cy="40" rx="34" ry="24"/>', diamond:'<polygon points="40,4 72,40 40,76 8,40"/>'
+};
+function shapeSVG(id,color,size){
+  return '<svg width="'+(size||76)+'" height="'+(size||76)+'" viewBox="0 0 80 80" fill="'+color+'" aria-hidden="true">'+(SHAPE_SVG[id]||"")+"</svg>";
+}
+const BADGES = [
+ {id:"first", em:"👣", bn:"প্রথম পদক্ষেপ", en:"First Step", desc:"প্রথম পাঠ শেষ করো", check:s=>s.learnedTotal>=1},
+ {id:"explorer", em:"🧭", bn:"অভিযাত্রী", en:"Explorer", desc:"৫টা বিষয় ঘুরে দেখো", check:s=>s.visitedCats.size>=5},
+ {id:"reader", em:"📚", bn:"বইপোকা", en:"Bookworm", desc:"২৫টা কার্ড শেখো", check:s=>s.learnedTotal>=25},
+ {id:"star10", em:"⭐", bn:"তারা সংগ্রাহক", en:"Star Collector", desc:"১০টা তারা জমাও", check:s=>s.stars>=10},
+ {id:"quiz", em:"🧠", bn:"কুইজ মাস্টার", en:"Quiz Master", desc:"কুইজে ৮+ সঠিক উত্তর", check:s=>s.bestQuiz>=8},
+ {id:"memory", em:"🃏", bn:"মেমরি চ্যাম্পিয়ন", en:"Memory Champion", desc:"মেমরি গেম শেষ করো", check:s=>s.memoryWins>=1},
+ {id:"artist", em:"🎨", bn:"ছোট্ট শিল্পী", en:"Little Artist", desc:"৫টা অক্ষর ট্রেস করো", check:s=>s.traced>=5},
+ {id:"puzzle", em:"🧩", bn:"ধাঁধাবাজ", en:"Puzzle Pro", desc:"ধাঁধায় ৫ রাউন্ড জেতো", check:s=>s.puzzleWins>=5},
+ {id:"daily", em:"🌟", bn:"দৈনিক হিরো", en:"Daily Hero", desc:"আজকের চ্যালেঞ্জ শেষ করো", check:s=>s.dailyDone},
+ {id:"star50", em:"🏆", bn:"চ্যাম্পিয়ন", en:"Champion", desc:"৫০টা তারা জমাও", check:s=>s.stars>=50}
+];
+const LEVELS = [
+ {min:0, bn:"ছোট্ট শিক্ষার্থী", en:"Little Learner"},
+ {min:10, bn:"কৌতূহলী বন্ধু", en:"Curious Friend"},
+ {min:25, bn:"জ্ঞানী তারা", en:"Bright Star"},
+ {min:45, bn:"সুপার শিক্ষার্থী", en:"Super Learner"},
+ {min:70, bn:"AEUN কিডস চ্যাম্পিয়ন", en:"AEUN Kids Champion"}
+];
+
+/* ==================== STATE (in-memory, this session) ==================== */
+const S = {
+  stars:0, learned:{}, learnedTotal:0, visitedCats:new Set(),
+  quizPlayed:0, quizCorrect:0, quizWrong:0, bestQuiz:0,
+  memoryWins:0, memoryPlays:0, traced:0, tracedSet:new Set(),
+  puzzleWins:0, badges:new Set(), dailyDone:false, dailyClaimed:false,
+  startedAt:Date.now(),
+  settings:{ lang:"both", sound:true, slow:false, dark:null }
+};
+CATS.forEach(c=>S.learned[c.id]=new Set());
+
+/* ==================== HELPERS ==================== */
+const $ = s=>document.querySelector(s);
+const $$ = s=>Array.from(document.querySelectorAll(s));
+function esc(s){ return String(s).replace(/[&<>"]/g, m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;"}[m])); }
+function shuffle(a){ a=a.slice(); for(let i=a.length-1;i>0;i--){ const j=Math.floor(Math.random()*(i+1)); [a[i],a[j]]=[a[j],a[i]]; } return a; }
+function sample(a,n){ return shuffle(a).slice(0,n); }
+function toast(msg,ms){
+  const t=$("#toast"); t.textContent=msg; t.classList.add("show");
+  clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"), ms||2200);
+}
+function confetti(){
+  if(window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+  const box=$("#confetti"); const colors=["#FF6B5E","#FFB020","#00A88F","#3E9BDC","#F06595","#4F46E5"];
+  for(let i=0;i<36;i++){
+    const p=document.createElement("i");
+    p.style.left=Math.random()*100+"vw";
+    p.style.background=colors[i%colors.length];
+    p.style.animationDuration=(0.9+Math.random()*0.9)+"s";
+    p.style.animationDelay=(Math.random()*0.25)+"s";
+    p.style.transform="rotate("+(Math.random()*360)+"deg)";
+    box.appendChild(p); setTimeout(()=>p.remove(),2400);
+  }
+}
+/* sounds */
+let AC=null;
+function beep(freq,dur,type,delay){
+  if(!S.settings.sound) return;
+  try{
+    AC = AC || new (window.AudioContext||window.webkitAudioContext)();
+    if(AC.state==="suspended") AC.resume();
+    const o=AC.createOscillator(), g=AC.createGain(), t=AC.currentTime+(delay||0);
+    o.type=type||"sine"; o.frequency.value=freq;
+    g.gain.setValueAtTime(0.16,t); g.gain.exponentialRampToValueAtTime(0.001,t+dur);
+    o.connect(g); g.connect(AC.destination); o.start(t); o.stop(t+dur);
+  }catch(e){}
+}
+const sndPop =()=>beep(620,0.09,"triangle");
+const sndGood=()=>{ beep(660,0.12,"sine"); beep(880,0.16,"sine",0.1); };
+const sndWin =()=>{ [523,659,784,1046].forEach((f,i)=>beep(f,0.18,"triangle",i*0.11)); };
+const sndBad =()=>beep(200,0.2,"sawtooth");
+/* speech */
+function speak(text,lang){
+  if(!S.settings.sound || !("speechSynthesis" in window)) return;
+  try{
+    speechSynthesis.cancel();
+    const u=new SpeechSynthesisUtterance(text);
+    u.lang=lang; u.rate=S.settings.slow?0.62:0.88; u.pitch=1.1;
+    const vs=speechSynthesis.getVoices();
+    const v=vs.find(v=>v.lang && v.lang.toLowerCase().indexOf(lang.slice(0,2))===0);
+    if(v) u.voice=v;
+    speechSynthesis.speak(u);
+  }catch(e){}
+}
+if("speechSynthesis" in window) speechSynthesis.getVoices();
+function speakItem(cat,item){
+  const lang=S.settings.lang;
+  if(cat.id==="bn-alpha"){ if(lang!=="en") speak(item.d+"। "+item.bn,"bn-BD"); if(lang==="both") setTimeout(()=>speak(item.en,"en-US"),1100); return; }
+  if(cat.id==="en-alpha"){ if(lang!=="bn") speak(item.d+". "+item.en,"en-US"); if(lang==="both") setTimeout(()=>speak(item.bn,"bn-BD"),1100); return; }
+  if(cat.id==="numbers"){ if(lang!=="en") speak(item.bn,"bn-BD"); if(lang!=="bn") setTimeout(()=>speak(item.en.replace(/\s\d+$/,""),"en-US"), lang==="both"?800:0); return; }
+  if(lang!=="en") speak(item.bn,"bn-BD");
+  if(lang!=="bn") setTimeout(()=>speak(item.en,"en-US"), lang==="both"?900:0);
+}
+function addStars(n){
+  S.stars+=n; $("#starCount").textContent=S.stars; checkBadges();
+}
+function checkBadges(){
+  BADGES.forEach(b=>{
+    if(!S.badges.has(b.id) && b.check(S)){
+      S.badges.add(b.id);
+      const t=$("#badgeToast");
+      t.innerHTML="🏅 নতুন ব্যাজ! <b>"+esc(b.bn)+"</b> · "+esc(b.en);
+      t.classList.add("show"); sndWin();
+      clearTimeout(t._h); t._h=setTimeout(()=>t.classList.remove("show"),3200);
+      if($("#view-rewards").classList.contains("active")) renderRewards();
+    }
+  });
+}
+function markLearned(catId,idx){
+  if(!S.learned[catId].has(idx)){
+    S.learned[catId].add(idx); S.learnedTotal++;
+    if(S.learnedTotal%5===0) addStars(1);
+    checkBadges(); renderDaily();
+  }
+}
+
+/* item visuals */
+function itemVisual(item,size){
+  if(item.kind==="color") return '<span class="swatch" style="background:'+item.d+'"></span>';
+  if(item.kind==="shape") return '<span class="shapebox">'+shapeSVG(item.d,"#FF8A3D",size||76)+"</span>";
+  if(item.kind==="word") return '<span class="em" aria-hidden="true">'+item.d+"</span>";
+  let dots="";
+  if(item.val) dots='<span class="dots" aria-hidden="true">'+"●".repeat(Math.min(item.val,20))+"</span>";
+  return '<span class="big">'+esc(item.d)+"</span>"+(item.em?'<span class="em" aria-hidden="true">'+item.em+"</span>":"")+dots;
+}
+function itemVisualBig(item){
+  if(item.kind==="color") return '<span class="swatch" style="background:'+item.d+';width:130px;height:130px"></span>';
+  if(item.kind==="shape") return shapeSVG(item.d,"#FF8A3D",150);
+  if(item.kind==="word") return '<span class="em" aria-hidden="true">'+item.d+"</span>";
+  return '<span class="big">'+esc(item.d)+"</span>"+(item.em?'<span class="em" aria-hidden="true">'+item.em+"</span>":"");
+}
+function itemNames(item){
+  const lang=S.settings.lang;
+  let bn=item.bn, en=item.en;
+  if(lang==="bn") en=""; if(lang==="en") bn="";
+  return {bn,en};
+}
+</script>
+
+<script>
+"use strict";
+/* ==================== NAVIGATION ==================== */
+let currentCat="bn-alpha", learnMode="cards";
+function show(view,catId){
+  if(catId) currentCat=catId;
+  $$(".view").forEach(v=>v.classList.remove("active"));
+  $("#view-"+view).classList.add("active");
+  $$(".bottomnav button").forEach(b=>b.classList.toggle("on", b.dataset.goto===view || (view==="learn"&&b.dataset.goto==="learn")));
+  window.scrollTo({top:0,behavior:"smooth"});
+  if(view==="learn") renderLearn();
+  if(view==="quiz") startQuiz();
+  if(view==="memory") startMemory();
+  if(view==="puzzle") startPuzzle();
+  if(view==="rewards") renderRewards();
+  if(view==="parent") renderParent();
+  if(view==="trace") resetTraceLetter();
+  if(view==="home") renderHome();
+}
+document.addEventListener("click",e=>{
+  const g=e.target.closest("[data-goto]");
+  if(g){ sndPop(); show(g.dataset.goto, g.dataset.cat); }
+});
+$("#logoBtn").addEventListener("click",()=>show("home"));
+$("#parentBtn").addEventListener("click",()=>show("parent"));
+
+/* ==================== HOME ==================== */
+function renderHome(){
+  $("#catGrid").innerHTML = CATS.map(c=>{
+    const done=S.learned[c.id].size, tot=c.items.length, pct=Math.round(done/tot*100);
+    return '<button class="cat-card" data-goto="learn" data-cat="'+c.id+'" aria-label="'+esc(c.bn)+' '+esc(c.en)+'">'
+      +'<span class="cat-emoji" aria-hidden="true">'+c.icon+'</span>'
+      +'<span class="cat-name">'+esc(c.bn)+'</span><span class="cat-sub">'+esc(c.en)+' · '+tot+'টি</span>'
+      +'<span class="cat-prog"><i style="width:'+pct+'%;background:'+c.color+'"></i></span></button>';
+  }).join("");
+  renderDaily();
+}
+/* daily challenge — seeded by today's date */
+function dailySeed(){
+  const d=new Date(); return d.getFullYear()*372+(d.getMonth()+1)*31+d.getDate();
+}
+function dailyPlan(){
+  const seed=dailySeed();
+  const learnCat=CATS[seed%CATS.length];
+  const traceSet=["bn","en","num"][seed%3];
+  return { cat:learnCat, learnNeed:5, quizNeed:3, traceNeed:2, traceSet };
+}
+function dailyProgress(){
+  const p=dailyPlan();
+  return {
+    learn:Math.min(S.learned[p.cat.id].size,p.learnNeed),
+    quiz:Math.min(S.dailyQuiz||0,p.quizNeed),
+    trace:Math.min(S.dailyTrace||0,p.traceNeed), plan:p
+  };
+}
+function renderDaily(){
+  const box=$("#dailyBox"); if(!box) return;
+  const dp=dailyProgress(), p=dp.plan;
+  const allDone = dp.learn>=p.learnNeed && dp.quiz>=p.quizNeed && dp.trace>=p.traceNeed;
+  if(allDone && !S.dailyDone){ S.dailyDone=true; }
+  const row=(done,need,label,view,cat)=>'<li class="'+(done>=need?"done":"")+'"><span class="box">'+(done>=need?"✓":"")+'</span><span class="t">'+label+' ('+done+'/'+need+')</span>'
+    +(done<need?'<button class="btn btn-brand" style="padding:7px 14px" data-goto="'+view+'"'+(cat?' data-cat="'+cat+'"':"")+'>করি →</button>':"")+"</li>";
+  box.innerHTML='<h3>🌟 আজকের চ্যালেঞ্জ · Daily Challenge</h3>'
+    +'<p>'+new Date().toLocaleDateString("bn-BD",{weekday:"long",day:"numeric",month:"long"})+' — সব কাজ শেষ করলেই ৫টা তারা!</p>'
+    +'<ul class="task-list">'
+    +row(dp.learn,p.learnNeed,'"'+p.cat.bn+'" থেকে শেখো',"learn",p.cat.id)
+    +row(dp.quiz,p.quizNeed,"কুইজে সঠিক উত্তর দাও","quiz")
+    +row(dp.trace,p.traceNeed,"অক্ষর ট্রেস করো","trace")
+    +"</ul>"
+    +(allDone
+      ? (S.dailyClaimed
+          ? '<p style="color:var(--teal);font-weight:800;margin:0">🎉 আজকের চ্যালেঞ্জ শেষ! কাল আবার নতুন চ্যালেঞ্জ।</p>'
+          : '<button class="btn btn-amber" id="claimDaily" type="button">🎁 ৫টা তারা নাও!</button>')
+      : "");
+  const claim=$("#claimDaily");
+  if(claim) claim.addEventListener("click",()=>{
+    S.dailyClaimed=true; addStars(5); confetti(); sndWin();
+    toast("🎉 অভিনন্দন! ৫টা তারা পেয়েছো!"); renderDaily(); checkBadges();
+  });
+}
+
+/* ==================== LEARN ==================== */
+function renderLearn(){
+  const cat=CAT(currentCat); S.visitedCats.add(cat.id); checkBadges();
+  $("#learnTitle").textContent=cat.icon+" "+cat.bn;
+  $("#learnSub").textContent=cat.en+" · "+cat.sub+" · শেখা হয়েছে "+S.learned[cat.id].size+"/"+cat.items.length;
+  $("#modeCards").classList.toggle("on",learnMode==="cards");
+  $("#modeFlash").classList.toggle("on",learnMode==="flash");
+  $("#learnGridWrap").hidden = learnMode!=="cards";
+  $("#flashWrap").hidden = learnMode!=="flash";
+  if(learnMode==="cards"){
+    $("#learnGrid").innerHTML=cat.items.map((it,i)=>{
+      const n=itemNames(it);
+      return '<button class="learn-card'+(S.learned[cat.id].has(i)?" learned":"")+'" data-idx="'+i+'" aria-label="'+esc(it.bn)+" "+esc(it.en)+'">'
+        +'<span class="done-tick">✓</span>'+itemVisual(it)
+        +(n.bn?'<span class="wbn">'+esc(n.bn)+"</span>":"")+(n.en?'<span class="wen">'+esc(n.en)+"</span>":"")+"</button>";
+    }).join("");
+    $$("#learnGrid .learn-card").forEach(b=>b.addEventListener("click",()=>openDetail(cat,+b.dataset.idx)));
+  } else {
+    renderFlash(cat);
+  }
+}
+$("#modeCards").addEventListener("click",()=>{ learnMode="cards"; renderLearn(); });
+$("#modeFlash").addEventListener("click",()=>{ learnMode="flash"; renderLearn(); });
+
+let detailIdx=0;
+function openDetail(cat,idx){
+  detailIdx=idx; const it=cat.items[idx];
+  markLearned(cat.id,idx);
+  const n=itemNames(it);
+  $("#detailSheet").innerHTML =
+    itemVisualBig(it)
+    +'<h3>'+(n.bn?esc(n.bn):esc(n.en))+"</h3>"
+    +(n.bn&&n.en?'<p class="en">'+esc(n.en)+"</p>":'<p class="en"></p>')
+    +'<div class="row">'
+    +(S.settings.lang!=="en"?'<button class="speak-btn" id="spBn" type="button">🔊 বাংলা শুনি</button>':"")
+    +(S.settings.lang!=="bn"?'<button class="speak-btn en" id="spEn" type="button">🔊 English</button>':"")
+    +"</div>"
+    +'<div class="nav-row"><button class="btn btn-ghost" id="dPrev" type="button">← আগের</button>'
+    +'<button class="btn btn-brand" id="dClose" type="button">বন্ধ করি</button>'
+    +'<button class="btn btn-ghost" id="dNext" type="button">পরের →</button></div>';
+  $("#detailOverlay").classList.add("open");
+  const cardEl=$('#learnGrid .learn-card[data-idx="'+idx+'"]'); if(cardEl) cardEl.classList.add("learned");
+  $("#learnSub").textContent=cat.en+" · "+cat.sub+" · শেখা হয়েছে "+S.learned[cat.id].size+"/"+cat.items.length;
+  speakItem(cat,it);
+  const bn=$("#spBn"), en=$("#spEn");
+  if(bn) bn.addEventListener("click",()=>{ if(cat.id==="en-alpha") speak(it.d+". "+it.bn,"bn-BD"); else speak(cat.id==="numbers"?it.bn:(it.d&&cat.id==="bn-alpha"?it.d+"। "+it.bn:it.bn),"bn-BD"); });
+  if(en) en.addEventListener("click",()=>{ if(cat.id==="bn-alpha") speak(it.en,"en-US"); else speak(it.d&&cat.id==="en-alpha"?it.d+". "+it.en:it.en,"en-US"); });
+  $("#dClose").addEventListener("click",closeDetail);
+  $("#dPrev").addEventListener("click",()=>openDetail(cat,(idx-1+cat.items.length)%cat.items.length));
+  $("#dNext").addEventListener("click",()=>openDetail(cat,(idx+1)%cat.items.length));
+}
+function closeDetail(){ $("#detailOverlay").classList.remove("open"); if("speechSynthesis" in window) speechSynthesis.cancel(); }
+$("#detailOverlay").addEventListener("click",e=>{ if(e.target.id==="detailOverlay") closeDetail(); });
+
+/* flash cards */
+let flashIdx=0, flashFlipped=false;
+function renderFlash(cat){
+  flashIdx=Math.min(flashIdx,cat.items.length-1); flashFlipped=false;
+  const it=cat.items[flashIdx]; const n=itemNames(it);
+  $("#flashWrap").innerHTML='<div class="flash-stage">'
+    +'<button class="flash-card" id="flashCard" type="button" aria-label="Flash card — tap to flip"><span class="flash-in">'
+    +'<span class="flash-face front">'+itemVisual(it,110)+'<span class="hint">কার্ডে চাপ দিলে উল্টে যাবে 👆</span></span>'
+    +'<span class="flash-face back"><span class="wbn">'+esc(it.bn)+'</span><span class="wen">'+esc(it.en)+'</span><span class="hint">নাম শুনতে নিচের বোতামে চাপ দাও</span></span>'
+    +"</span></button>"
+    +'<div class="flash-nav"><button class="btn btn-ghost" id="fPrev" type="button">←</button>'
+    +'<span class="flash-count">'+(flashIdx+1)+" / "+cat.items.length+"</span>"
+    +'<button class="btn btn-amber" id="fSpeak" type="button">🔊 শুনি</button>'
+    +'<button class="btn btn-ghost" id="fNext" type="button">→</button></div></div>';
+  $("#flashCard").addEventListener("click",function(){
+    this.classList.toggle("flipped"); flashFlipped=!flashFlipped; sndPop();
+    if(flashFlipped) markLearned(cat.id,flashIdx);
+  });
+  $("#fSpeak").addEventListener("click",()=>speakItem(cat,it));
+  $("#fPrev").addEventListener("click",()=>{ flashIdx=(flashIdx-1+cat.items.length)%cat.items.length; renderFlash(cat); });
+  $("#fNext").addEventListener("click",()=>{ flashIdx=(flashIdx+1)%cat.items.length; renderFlash(cat); });
+}
+
+/* ==================== TRACING ==================== */
+const TRACE_SETS={
+  bn: CAT("bn-alpha").items.slice(0,20),
+  en: CAT("en-alpha").items,
+  num: CAT("numbers").items.slice(0,10)
+};
+let traceSetName="bn", traceIdx=0, traceColor="#4F46E5", drawing=false, hasDrawn=false;
+const TRACE_COLORS=["#4F46E5","#FF6B5E","#00A88F","#FFB020","#F06595","#3E9BDC"];
+function traceItem(){ return TRACE_SETS[traceSetName][traceIdx]; }
+function resetTraceLetter(){
+  const it=traceItem();
+  $("#traceGuide").textContent=it.d;
+  $("#traceWord").textContent="শব্দ: "+it.bn+" · "+it.en+(it.em?"  "+it.em:"");
+  clearTrace();
+}
+function clearTrace(){
+  const cv=$("#traceCanvas"), ctx=cv.getContext("2d");
+  ctx.clearRect(0,0,cv.width,cv.height); hasDrawn=false;
+}
+function initTrace(){
+  $("#traceColors").innerHTML=TRACE_COLORS.map((c,i)=>'<button type="button" data-c="'+c+'" class="'+(i===0?"on":"")+'" style="background:'+c+'" aria-label="Pencil color '+c+'"></button>').join("");
+  $$("#traceColors button").forEach(b=>b.addEventListener("click",()=>{
+    traceColor=b.dataset.c; $$("#traceColors button").forEach(x=>x.classList.toggle("on",x===b)); sndPop();
+  }));
+  $$("#traceSeg button").forEach(b=>b.addEventListener("click",()=>{
+    traceSetName=b.dataset.set; traceIdx=0;
+    $$("#traceSeg button").forEach(x=>x.classList.toggle("on",x===b)); resetTraceLetter();
+  }));
+  const cv=$("#traceCanvas"), ctx=cv.getContext("2d");
+  ctx.lineCap="round"; ctx.lineJoin="round";
+  function pos(e){
+    const r=cv.getBoundingClientRect();
+    return { x:(e.clientX-r.left)/r.width*cv.width, y:(e.clientY-r.top)/r.height*cv.height };
+  }
+  let last=null;
+  cv.addEventListener("pointerdown",e=>{ e.preventDefault(); drawing=true; last=pos(e); cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener("pointermove",e=>{
+    if(!drawing||!last) return;
+    const p=pos(e);
+    ctx.strokeStyle=traceColor; ctx.lineWidth=20;
+    ctx.beginPath(); ctx.moveTo(last.x,last.y); ctx.lineTo(p.x,p.y); ctx.stroke();
+    last=p; hasDrawn=true;
+  });
+  ["pointerup","pointercancel","pointerleave"].forEach(ev=>cv.addEventListener(ev,()=>{ drawing=false; last=null; }));
+  $("#traceClear").addEventListener("click",()=>{ clearTrace(); sndPop(); });
+  $("#tracePrev").addEventListener("click",()=>{ const n=TRACE_SETS[traceSetName].length; traceIdx=(traceIdx-1+n)%n; resetTraceLetter(); });
+  $("#traceNext").addEventListener("click",()=>{ const n=TRACE_SETS[traceSetName].length; traceIdx=(traceIdx+1)%n; resetTraceLetter(); });
+  $("#traceDone").addEventListener("click",()=>{
+    if(!hasDrawn){ toast("আগে অক্ষরটার উপর আঁকো তো! ✏️"); return; }
+    const key=traceSetName+":"+traceItem().d;
+    if(!S.tracedSet.has(key)){
+      S.tracedSet.add(key); S.traced++;
+      S.dailyTrace=(S.dailyTrace||0)+1;
+      addStars(1); sndGood(); confetti();
+      toast("খুব সুন্দর হয়েছে! ★ +১ তারা");
+    } else { sndGood(); toast("দারুণ! আরেকটা চেষ্টা করো 👏"); }
+    checkBadges(); renderDaily();
+    const n=TRACE_SETS[traceSetName].length; traceIdx=(traceIdx+1)%n;
+    setTimeout(resetTraceLetter,650);
+  });
+}
+
+/* ==================== QUIZ ==================== */
+let quiz={list:[],i:0,score:0,locked:false};
+function quizPool(){
+  const pool=[];
+  CATS.forEach(c=>c.items.forEach((it,i)=>pool.push({cat:c,it,idx:i})));
+  return pool;
+}
+function buildQuestion(){
+  const pool=quizPool();
+  const pick=pool[Math.floor(Math.random()*pool.length)];
+  const sameCat=CAT(pick.cat.id).items.filter((_,i)=>i!==pick.idx);
+  const wrongs=sample(sameCat,3);
+  const type=Math.floor(Math.random()*3); // 0: visual->name, 1: name->visual, 2: odd category word->visual
+  return {pick,wrongs,type};
+}
+function startQuiz(){
+  quiz={list:Array.from({length:10},buildQuestion),i:0,score:0,locked:false};
+  S.quizPlayed++; renderQuizQ();
+}
+function optLabel(pick,it,asVisual){
+  if(asVisual){
+    if(it.kind==="color") return '<span class="swatch" style="background:'+it.d+';width:52px;height:52px;margin:0 auto"></span>';
+    if(it.kind==="shape") return shapeSVG(it.d,"#FF8A3D",56);
+    if(it.kind==="word") return '<span class="em">'+it.d+"</span>";
+    return '<span style="font-size:2.2rem;font-weight:800">'+esc(it.d)+"</span>"+(it.em?'<span class="em" style="font-size:1.8rem">'+it.em+"</span>":"");
+  }
+  const lang=S.settings.lang;
+  return lang==="en" ? esc(it.en) : esc(it.bn)+(lang==="both"?' <span style="color:var(--ink-soft);font-size:.9em">· '+esc(it.en)+"</span>":"");
+}
+function renderQuizQ(){
+  const box=$("#quizBox");
+  if(quiz.i>=quiz.list.length){ renderQuizEnd(); return; }
+  const q=quiz.list[quiz.i], it=q.pick.it;
+  const options=shuffle([it].concat(q.wrongs));
+  let qHead="", qBig="";
+  if(q.type===0){ qHead="এটা কী? · What is this?"; qBig=itemVisualBig(it); }
+  else if(q.type===1){ qHead="কোনটা “"+(S.settings.lang==="en"?it.en:it.bn)+"”?"; qBig='<div class="quiz-big">'+(S.settings.lang==="en"?esc(it.en):esc(it.bn))+"</div>"; }
+  else { qHead="শব্দটা শুনে সঠিক ছবি বেছে নাও 🔊"; qBig='<button class="btn btn-amber" id="qSpeak" type="button" style="font-size:1.2rem">🔊 শব্দটা শোনো</button>'; }
+  const asVisual = q.type!==0;
+  box.innerHTML='<div class="quiz-prog"><i style="width:'+(quiz.i/quiz.list.length*100)+'%"></i></div>'
+    +'<p class="quiz-q">প্রশ্ন '+(quiz.i+1)+" / "+quiz.list.length+" · স্কোর: "+quiz.score+"</p>"
+    +'<p class="quiz-q" style="font-size:1.45rem">'+qHead+"</p>"+qBig
+    +'<div class="quiz-opts">'+options.map(o=>'<button class="quiz-opt" type="button" data-bn="'+esc(o.bn)+'" data-en="'+esc(o.en)+'">'+optLabel(q.pick,o,asVisual)+"</button>").join("")+"</div>"
+    +'<p class="quiz-fb" id="quizFb"></p>';
+  const sp=$("#qSpeak");
+  if(sp) sp.addEventListener("click",()=>speakItem(q.pick.cat,it));
+  if(q.type===2) setTimeout(()=>speakItem(q.pick.cat,it),350);
+  quiz.locked=false;
+  $$("#quizBox .quiz-opt").forEach(b=>b.addEventListener("click",()=>{
+    if(quiz.locked) return; quiz.locked=true;
+    const right = b.dataset.bn===it.bn && b.dataset.en===it.en;
+    $$("#quizBox .quiz-opt").forEach(x=>{
+      x.disabled=true;
+      if(x.dataset.bn===it.bn && x.dataset.en===it.en) x.classList.add("right");
+    });
+    const fb=$("#quizFb");
+    if(right){
+      quiz.score++; S.quizCorrect++; S.dailyQuiz=(S.dailyQuiz||0)+1;
+      fb.textContent="🎉 সঠিক! "+it.bn+" · "+it.en; fb.style.color="var(--teal)"; sndGood();
+    } else {
+      S.quizWrong++; b.classList.add("wrong"); b.classList.add("shake");
+      fb.textContent="আরেকবার ভাবো! সঠিকটা হলো: "+it.bn+" · "+it.en; fb.style.color="var(--coral)"; sndBad();
+    }
+    renderDaily();
+    setTimeout(()=>{ quiz.i++; renderQuizQ(); }, right?1200:2100);
+  }));
+}
+function renderQuizEnd(){
+  const sc=quiz.score;
+  S.bestQuiz=Math.max(S.bestQuiz,sc);
+  const starsEarned = sc>=8?3 : sc>=5?2 : sc>=3?1 : 0;
+  if(starsEarned) addStars(starsEarned);
+  const starStr=[1,2,3].map(i=>'<span class="'+(i<=starsEarned?"on":"")+'">★</span>').join("");
+  $("#quizBox").innerHTML='<div class="bounce-in"><div style="font-size:4rem">'+(sc>=8?"🏆":sc>=5?"🎉":"💪")+"</div>"
+    +'<p class="quiz-q">'+(sc>=8?"অসাধারণ! তুমি কুইজ মাস্টার!":sc>=5?"খুব ভালো করেছো!":"ভালো চেষ্টা! আবার খেললে আরও ভালো হবে!")+"</p>"
+    +'<div class="score-big">'+sc+" / "+quiz.list.length+"</div>"
+    +'<div class="stars-row">'+starStr+"</div>"
+    +(starsEarned?'<p style="font-weight:800;color:var(--amber)">+'+starsEarned+" তারা পেয়েছো!</p>":"")
+    +'<div class="row" style="display:flex;gap:10px;justify-content:center;margin-top:14px;flex-wrap:wrap">'
+    +'<button class="btn btn-brand" id="qAgain" type="button">🔄 আবার খেলি</button>'
+    +'<button class="btn btn-ghost" data-goto="home" type="button">🏠 বাড়ি যাই</button></div></div>';
+  if(sc>=5){ confetti(); sndWin(); } else sndGood();
+  checkBadges();
+  $("#qAgain").addEventListener("click",startQuiz);
+}
+
+/* ==================== MEMORY ==================== */
+let mem={cards:[],open:[],matched:0,moves:0,lock:false,timer:null,secs:0};
+function startMemory(){
+  clearInterval(mem.timer);
+  const pool=CATS.filter(c=>["animals","fruits","birds","vehicles"].includes(c.id)).flatMap(c=>c.items.filter(i=>i.kind==="word"));
+  const picks=sample(pool,6);
+  mem={cards:shuffle(picks.concat(picks).map((it,i)=>({it,key:it.bn+"|"+it.en,id:i}))),open:[],matched:0,moves:0,lock:false,timer:null,secs:0};
+  S.memoryPlays++;
+  $("#memMoves").textContent="0"; $("#memPairs").textContent="0"; $("#memTime").textContent="0:00"; $("#memMsg").textContent="";
+  renderMemory();
+  mem.timer=setInterval(()=>{ mem.secs++; $("#memTime").textContent=Math.floor(mem.secs/60)+":"+String(mem.secs%60).padStart(2,"0"); },1000);
+}
+function renderMemory(){
+  $("#memGrid").innerHTML=mem.cards.map((c,i)=>'<button class="mem-card" type="button" data-i="'+i+'" aria-label="Memory card"><span class="back-q" aria-hidden="true">?</span><span class="face" aria-hidden="true">'+c.it.d+"</span></button>").join("");
+  $$("#memGrid .mem-card").forEach(b=>b.addEventListener("click",()=>flipMem(+b.dataset.i,b)));
+}
+function flipMem(i,el){
+  if(mem.lock || el.classList.contains("open") || el.classList.contains("matched")) return;
+  el.classList.add("open"); sndPop(); mem.open.push({i,el});
+  if(mem.open.length<2) return;
+  mem.moves++; $("#memMoves").textContent=mem.moves;
+  const [a,b]=mem.open;
+  if(mem.cards[a.i].key===mem.cards[b.i].key){
+    a.el.classList.add("matched"); b.el.classList.add("matched");
+    mem.open=[]; mem.matched++; $("#memPairs").textContent=mem.matched; sndGood();
+    const it=mem.cards[a.i].it; speak(it.bn+"। "+it.en, S.settings.lang==="en"?"en-US":"bn-BD");
+    if(mem.matched===6){
+      clearInterval(mem.timer); S.memoryWins++;
+      const bonus = mem.moves<=10?3:mem.moves<=14?2:1;
+      addStars(bonus); confetti(); sndWin(); checkBadges();
+      $("#memMsg").innerHTML="🏆 সব জোড়া মিলে গেছে! "+mem.moves+" চালে, "+$("#memTime").textContent+" সময়ে · +"+bonus+" তারা!";
+    }
+  } else {
+    mem.lock=true;
+    setTimeout(()=>{ a.el.classList.remove("open"); b.el.classList.remove("open"); mem.open=[]; mem.lock=false; },850);
+  }
+}
+$("#memRestart").addEventListener("click",startMemory);
+
+/* ==================== PUZZLE ==================== */
+let puz={round:0,score:0,locked:false,rounds:[]};
+function buildPuzzleRounds(){
+  const nums=CAT("numbers").items.slice(0,10);
+  const rounds=[];
+  for(let r=0;r<3;r++){
+    const start=Math.floor(Math.random()*6);
+    const seq=[nums[start],nums[start+1],nums[start+2],nums[start+3]];
+    const miss=1+Math.floor(Math.random()*2);
+    rounds.push({type:"seq",seq,answer:seq[miss],miss,
+      opts:shuffle([seq[miss],nums[Math.min(start+4,9)],nums[Math.max(start-1,0)]]).filter((v,i,a)=>a.indexOf(v)===i).slice(0,3)});
+  }
+  const wordCats=CATS.filter(c=>["animals","fruits","vegetables","vehicles","birds"].includes(c.id));
+  for(let r=0;r<2;r++){
+    const c1=wordCats[Math.floor(Math.random()*wordCats.length)];
+    let c2=wordCats[Math.floor(Math.random()*wordCats.length)];
+    if(c2===c1) c2=wordCats[(wordCats.indexOf(c1)+1)%wordCats.length];
+    const three=sample(c1.items.filter(i=>i.kind==="word"),3), odd=sample(c2.items.filter(i=>i.kind==="word"),1)[0];
+    rounds.push({type:"odd",cells:shuffle(three.concat([odd])),answer:odd,catName:c1.bn});
+  }
+  return shuffle(rounds);
+}
+function startPuzzle(){ puz={round:0,score:0,locked:false,rounds:buildPuzzleRounds()}; renderPuzzle(); }
+function renderPuzzle(){
+  const st=$("#puzzleStage");
+  if(puz.round>=puz.rounds.length){
+    const bonus=puz.score>=4?2:puz.score>=3?1:0;
+    if(bonus) addStars(bonus);
+    if(puz.score>=3){ S.puzzleWins+=puz.score; }
+    checkBadges();
+    st.innerHTML='<div class="bounce-in"><div style="font-size:4rem">'+(puz.score>=4?"🏆":"🎉")+'</div>'
+      +'<p class="puzzle-q">ধাঁধা শেষ! স্কোর: '+puz.score+" / "+puz.rounds.length+"</p>"
+      +(bonus?'<p style="font-weight:800;color:var(--amber)">+'+bonus+" তারা!</p>":"")
+      +'<button class="btn btn-brand" id="puzAgain" type="button">🔄 আবার খেলি</button></div>';
+    if(puz.score>=4){ confetti(); sndWin(); }
+    $("#puzAgain").addEventListener("click",startPuzzle);
+    return;
+  }
+  const r=puz.rounds[puz.round];
+  let cells="", opts="", q="";
+  if(r.type==="seq"){
+    q="ক্রমটা পূরণ করো · Complete the sequence";
+    cells=r.seq.map((n,i)=> i===r.miss
+      ? '<span class="puzzle-cell q">?</span>'
+      : '<span class="puzzle-cell">'+esc(n.d)+"</span>").join("");
+    opts=r.opts.map(o=>'<button class="puzzle-opt" type="button" data-d="'+esc(o.d)+'">'+esc(o.d)+"</button>").join("");
+  } else {
+    q="কোনটা আলাদা? · Which one is different?";
+    cells=r.cells.map(c=>'<span class="puzzle-cell" style="font-size:2.6rem">'+c.d+"</span>").join("");
+    opts=r.cells.map(c=>'<button class="puzzle-opt" type="button" data-d="'+esc(c.d)+'" style="font-size:2.6rem">'+c.d+"</button>").join("");
+  }
+  st.innerHTML='<p class="quiz-q" style="color:var(--ink-soft)">রাউন্ড '+(puz.round+1)+" / "+puz.rounds.length+" · স্কোর: "+puz.score+"</p>"
+    +'<p class="puzzle-q">'+q+'</p><div class="puzzle-row">'+cells+'</div><div class="puzzle-opts">'+opts+'</div><p class="quiz-fb" id="puzFb"></p>';
+  puz.locked=false;
+  $$("#puzzleStage .puzzle-opt").forEach(b=>b.addEventListener("click",()=>{
+    if(puz.locked) return; puz.locked=true;
+    const right = r.type==="seq" ? b.dataset.d===r.answer.d : b.dataset.d===r.answer.d;
+    if(right){
+      b.classList.add("right"); puz.score++; sndGood();
+      $("#puzFb").textContent="🎉 ঠিক ধরেছো!"; $("#puzFb").style.color="var(--teal)";
+    } else {
+      b.classList.add("wrong"); b.classList.add("shake"); sndBad();
+      $("#puzFb").textContent="ওটা নয় — সঠিকটা অন্য একটা!"; $("#puzFb").style.color="var(--coral)";
+      $$("#puzzleStage .puzzle-opt").forEach(x=>{ if(x.dataset.d===r.answer.d) x.classList.add("right"); });
+    }
+    setTimeout(()=>{ puz.round++; renderPuzzle(); },1500);
+  }));
+}
+
+/* ==================== REWARDS ==================== */
+function renderRewards(){
+  $("#rewardStars").textContent=S.stars;
+  let lvl=LEVELS[0], next=null;
+  for(let i=0;i<LEVELS.length;i++){ if(S.stars>=LEVELS[i].min){ lvl=LEVELS[i]; next=LEVELS[i+1]||null; } }
+  $("#levelName").textContent=lvl.bn+" · "+lvl.en;
+  if(next){
+    $("#starsToNext").textContent=(next.min-S.stars);
+    $("#levelBar").style.width=Math.round((S.stars-lvl.min)/(next.min-lvl.min)*100)+"%";
+  } else { $("#starsToNext").textContent="০"; $("#levelBar").style.width="100%"; }
+  $("#badgeGrid").innerHTML=BADGES.map(b=>{
+    const got=S.badges.has(b.id);
+    return '<div class="badge'+(got?" earned":"")+'"><span class="b-em" aria-hidden="true">'+b.em+"</span><b>"+esc(b.bn)+'</b><span>'+esc(b.en)+"</span><span>"+esc(b.desc)+(got?" · ✓ পেয়েছো!":"")+"</span></div>";
+  }).join("");
+}
+
+/* ==================== PARENT DASHBOARD & SETTINGS ==================== */
+function renderParent(){
+  const mins=Math.max(1,Math.round((Date.now()-S.startedAt)/60000));
+  const acc=(S.quizCorrect+S.quizWrong)?Math.round(S.quizCorrect/(S.quizCorrect+S.quizWrong)*100):0;
+  const stats=[
+    {n:S.stars,l:"মোট তারা ★"},{n:S.learnedTotal,l:"শেখা কার্ড"},{n:S.quizCorrect,l:"কুইজে সঠিক"},
+    {n:acc+"%",l:"কুইজের নির্ভুলতা"},{n:S.memoryWins,l:"মেমরি জয়"},{n:S.traced,l:"ট্রেস করা অক্ষর"},
+    {n:S.badges.size,l:"অর্জিত ব্যাজ"},{n:mins+" মি.",l:"এই সেশনের সময়"}
+  ];
+  $("#statGrid").innerHTML=stats.map(s=>'<div class="stat"><span class="n">'+s.n+'</span><span class="l">'+s.l+"</span></div>").join("");
+  $("#progList").innerHTML=CATS.map(c=>{
+    const done=S.learned[c.id].size, tot=c.items.length, pct=Math.round(done/tot*100);
+    return '<div class="prog-row"><span>'+esc(c.bn)+'</span><span class="bar"><i style="width:'+pct+'%;background:'+c.color+'"></i></span><span>'+done+"/"+tot+"</span></div>";
+  }).join("");
+  $("#langSeg").querySelectorAll("button").forEach(b=>b.classList.toggle("on",b.dataset.lang===S.settings.lang));
+  $("#soundToggle").checked=S.settings.sound;
+  $("#slowToggle").checked=S.settings.slow;
+  $("#darkToggle").checked=document.documentElement.dataset.theme==="dark";
+}
+$$("#langSeg button").forEach(b=>b.addEventListener("click",()=>{
+  S.settings.lang=b.dataset.lang;
+  $$("#langSeg button").forEach(x=>x.classList.toggle("on",x===b));
+  toast(b.dataset.lang==="bn"?"ভাষা: বাংলা":b.dataset.lang==="en"?"Language: English":"ভাষা: বাংলা + English");
+}));
+$("#soundToggle").addEventListener("change",e=>{ S.settings.sound=e.target.checked; if(e.target.checked) sndGood(); });
+$("#slowToggle").addEventListener("change",e=>{ S.settings.slow=e.target.checked; });
+$("#darkToggle").addEventListener("change",e=>setTheme(e.target.checked?"dark":"light"));
+$("#resetBtn").addEventListener("click",()=>{
+  S.stars=0; S.learnedTotal=0; S.quizPlayed=0; S.quizCorrect=0; S.quizWrong=0; S.bestQuiz=0;
+  S.memoryWins=0; S.memoryPlays=0; S.traced=0; S.tracedSet.clear(); S.puzzleWins=0;
+  S.badges.clear(); S.visitedCats.clear(); S.dailyDone=false; S.dailyClaimed=false; S.dailyQuiz=0; S.dailyTrace=0;
+  CATS.forEach(c=>S.learned[c.id].clear());
+  $("#starCount").textContent="0"; renderParent(); renderDaily();
+  toast("অগ্রগতি আবার শুরু হলো");
+});
+
+/* ==================== THEME ==================== */
+function setTheme(mode){
+  S.settings.dark = mode==="dark";
+  document.documentElement.dataset.theme=mode;
+  $("#themeBtn").textContent = mode==="dark" ? "☀️" : "🌙";
+  const dt=$("#darkToggle"); if(dt) dt.checked = mode==="dark";
+}
+$("#themeBtn").addEventListener("click",()=>{
+  setTheme(document.documentElement.dataset.theme==="dark"?"light":"dark"); sndPop();
+});
+(function initTheme(){
+  const prefersDark=window.matchMedia("(prefers-color-scheme: dark)").matches;
+  setTheme(prefersDark?"dark":"light");
+})();
+
+/* ==================== INSTALL (PWA) ==================== */
+let deferredPrompt=null;
+window.addEventListener("beforeinstallprompt",e=>{
+  e.preventDefault(); deferredPrompt=e;
+  $("#installBtn").classList.add("show");
+});
+window.addEventListener("appinstalled",()=>{
+  deferredPrompt=null; $("#installBtn").classList.remove("show");
+  toast("🎉 AEUN Kids ইনস্টল হয়েছে!");
+});
+function installHelp(){
+  const ua=navigator.userAgent||"";
+  const isIOS=/iphone|ipad|ipod/i.test(ua);
+  $("#installHelpText").innerHTML = isIOS
+    ? "iPhone / iPad-এ ইনস্টল করতে:<br>১. নিচের <b>Share</b> বোতামে (⬆️) চাপ দিন<br>২. <b>“Add to Home Screen”</b> বেছে নিন<br>৩. <b>Add</b> চাপ দিন — হয়ে গেল! হোম স্ক্রিনে AEUN Kids আইকন আসবে।"
+    : "ইনস্টল করতে:<br>১. ব্রাউজারের মেনু (⋮) খুলুন<br>২. <b>“Install app”</b> বা <b>“Add to Home screen”</b> বেছে নিন<br>৩. <b>Install</b> চাপ দিন।<br><br>ইনস্টল হলে অ্যাপটা ইন্টারনেট ছাড়াও অনেক কিছু চালাতে পারবে, আর হোম স্ক্রিন থেকে এক চাপে খুলবে।";
+  $("#installOverlay").classList.add("open");
+}
+async function tryInstall(){
+  if(deferredPrompt){
+    deferredPrompt.prompt();
+    try{ await deferredPrompt.userChoice; }catch(e){}
+    deferredPrompt=null; $("#installBtn").classList.remove("show");
+  } else installHelp();
+}
+$("#installBtn").addEventListener("click",tryInstall);
+$("#installBtn2").addEventListener("click",tryInstall);
+$("#installClose").addEventListener("click",()=>$("#installOverlay").classList.remove("open"));
+$("#installOverlay").addEventListener("click",e=>{ if(e.target.id==="installOverlay") e.target.classList.remove("open"); });
+
+/* offline / online friendly notice */
+window.addEventListener("offline",()=>toast("📴 ইন্টারনেট নেই — তবু শেখা চলবে! সব পাঠ এই ডিভাইসেই আছে।",3200));
+window.addEventListener("online",()=>toast("🌐 ইন্টারনেট ফিরে এসেছে!"));
+
+/* keyboard: Esc closes overlays */
+document.addEventListener("keydown",e=>{
+  if(e.key==="Escape"){ closeDetail(); $("#installOverlay").classList.remove("open"); }
+});
+
+/* ==================== INIT ==================== */
+renderHome();
+initTrace();
+checkBadges();
+</script>
+<script>
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", function () {
+    navigator.serviceWorker.register("sw.js");
+  });
+}
+</script>
+</body>
+</html>
