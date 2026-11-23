@@ -1,21 +1,21 @@
 /* AEUN Kids - Learn & Play | Service Worker (cache-first, offline) */
-const CACHE = 'aeun-kids-v1';
+const CACHE = 'aeun-kids-v2';
 const FILES = [
   './',
   'index.html',
-  'assets/manifest.json',
-  'assets/icons/favicon-32.png',
-  'assets/icons/apple-touch-icon.png',
-  'assets/icons/icon-72.png',
-  'assets/icons/icon-96.png',
-  'assets/icons/icon-128.png',
-  'assets/icons/icon-144.png',
-  'assets/icons/icon-152.png',
-  'assets/icons/icon-192.png',
-  'assets/icons/icon-384.png',
-  'assets/icons/icon-512.png',
-  'assets/icons/icon-maskable-192.png',
-  'assets/icons/icon-maskable-512.png'
+  'manifest.json',
+  'favicon-32.png',
+  'apple-touch-icon.png',
+  'icon-72.png',
+  'icon-96.png',
+  'icon-128.png',
+  'icon-144.png',
+  'icon-152.png',
+  'icon-192.png',
+  'icon-384.png',
+  'icon-512.png',
+  'icon-maskable-192.png',
+  'icon-maskable-512.png'
 ];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(CACHE).then((c) => c.addAll(FILES)).then(() => self.skipWaiting()));
