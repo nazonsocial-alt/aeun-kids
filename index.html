@@ -7,9 +7,9 @@
 <meta name="description" content="AEUN Kids – Learn & Play: ২–৭ বছরের বাচ্চাদের জন্য বাংলা ও English বর্ণমালা, সংখ্যা, রং, আকৃতি, পশুপাখি, ফল, ট্রেসিং, কুইজ, মেমরি গেম আর ফ্ল্যাশ কার্ড — মজায় মজায় শেখা।" />
 <meta name="theme-color" content="#4F46E5" />
 <meta name="color-scheme" content="light dark" />
-<link rel="manifest" href="manifest.json" />
-<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-<link rel="apple-touch-icon" href="apple-touch-icon.png" />
+<link rel="manifest" href="assets/manifest.json" />
+<link rel="icon" type="image/png" sizes="32x32" href="assets/icons/favicon-32.png" />
+<link rel="apple-touch-icon" href="assets/icons/apple-touch-icon.png" />
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="default" />
@@ -663,27 +663,102 @@ const sndPop =()=>beep(620,0.09,"triangle");
 const sndGood=()=>{ beep(660,0.12,"sine"); beep(880,0.16,"sine",0.1); };
 const sndWin =()=>{ [523,659,784,1046].forEach((f,i)=>beep(f,0.18,"triangle",i*0.11)); };
 const sndBad =()=>beep(200,0.2,"sawtooth");
-/* speech */
-function speak(text,lang){
-  if(!S.settings.sound || !("speechSynthesis" in window)) return;
-  try{
-    speechSynthesis.cancel();
-    const u=new SpeechSynthesisUtterance(text);
-    u.lang=lang; u.rate=S.settings.slow?0.62:0.88; u.pitch=1.1;
-    const vs=speechSynthesis.getVoices();
-    const v=vs.find(v=>v.lang && v.lang.toLowerCase().indexOf(lang.slice(0,2))===0);
-    if(v) u.voice=v;
-    speechSynthesis.speak(u);
-  }catch(e){}
+/* speech — pre-recorded pronunciation clips (assets/audio), one per word per language.
+   Bengali clips re-recorded with a clear voice at a brisker pace, and every clip is
+   trimmed and loudness-normalised, so words start at once and sound clear.
+   Playback uses ONE shared player element: mobile browsers only unlock a player
+   that has been played from a real tap, so reusing the same element keeps every
+   later tap (and the quiz's automatic prompt) audible instead of silently failing. */
+const AUDIO_DIR="assets/audio/";
+const clipSrc=(catId,idx,lg)=>AUDIO_DIR+catId+"-"+idx+"-"+lg+".mp3";
+let player=null, clipTimer=null, playSeq=0;
+function getPlayer(){
+  if(!player){ player=new Audio(); player.preload="auto"; }
+  return player;
 }
-if("speechSynthesis" in window) speechSynthesis.getVoices();
+/* unlock the shared player on the very first tap, anywhere */
+let audioUnlocked=false;
+document.addEventListener("pointerdown",()=>{
+  if(audioUnlocked) return; audioUnlocked=true;
+  const p=getPlayer();
+  p.src=AUDIO_DIR+"_silence.mp3";
+  const pr=p.play();
+  if(pr&&pr.then) pr.then(()=>{ try{ if((p.currentSrc||"").indexOf("_silence")>=0){ p.pause(); p.currentTime=0; } }catch(e){} }).catch(()=>{});
+},{passive:true});
+function stopSpeak(){
+  playSeq++;
+  clearTimeout(clipTimer);
+  if(player){ try{ player.pause(); }catch(e){} }
+}
+/* pre-download a category's clips so the first tap on a word plays instantly */
+const warmedCats=new Set();
+function warmCat(catId){
+  if(warmedCats.has(catId)) return; warmedCats.add(catId);
+  const cat=CATS.find(c=>c.id===catId); if(!cat) return;
+  cat.items.forEach((it,i)=>{
+    ["bn","en"].forEach(lg=>{ const a=new Audio(); a.preload="auto"; a.src=clipSrc(catId,i,lg); });
+  });
+}
+function playClips(list){
+  if(!list.length) return;
+  if(!S.settings.sound){ toast("শব্দ বন্ধ আছে — অভিভাবক সেটিংস থেকে শব্দ চালু করুন 🔊",2800); return; }
+  stopSpeak();
+  const mySeq=playSeq;
+  let i=0, fails=0;
+  const step=()=>{
+    if(mySeq!==playSeq) return;
+    if(i>=list.length){
+      if(fails>0 && fails>=list.length) toast("শব্দটা লোড হয়নি — আরেকবার চাপ দাও 🔊",2600);
+      return;
+    }
+    const p=getPlayer();
+    p.src=list[i]; i++;
+    p.playbackRate=S.settings.slow?0.85:1.12;
+    let advanced=false, watch=null;
+    const next=ok=>{
+      if(advanced || mySeq!==playSeq) return; advanced=true;
+      if(watch) clearTimeout(watch);
+      if(!ok) fails++;
+      clipTimer=setTimeout(step,70);
+    };
+    /* watchdog: if a clip stalls with no ended/error event, move on instead of going silent */
+    watch=setTimeout(()=>next(false),4000);
+    p.onended=()=>next(true);
+    p.onerror=()=>next(false);
+    const pr=p.play();
+    if(pr&&pr.catch) pr.catch(()=>next(false));
+  };
+  step();
+}
 function speakItem(cat,item){
+  const idx=cat.items.indexOf(item); if(idx<0) return;
   const lang=S.settings.lang;
-  if(cat.id==="bn-alpha"){ if(lang!=="en") speak(item.d+"। "+item.bn,"bn-BD"); if(lang==="both") setTimeout(()=>speak(item.en,"en-US"),1100); return; }
-  if(cat.id==="en-alpha"){ if(lang!=="bn") speak(item.d+". "+item.en,"en-US"); if(lang==="both") setTimeout(()=>speak(item.bn,"bn-BD"),1100); return; }
-  if(cat.id==="numbers"){ if(lang!=="en") speak(item.bn,"bn-BD"); if(lang!=="bn") setTimeout(()=>speak(item.en.replace(/\s\d+$/,""),"en-US"), lang==="both"?800:0); return; }
-  if(lang!=="en") speak(item.bn,"bn-BD");
-  if(lang!=="bn") setTimeout(()=>speak(item.en,"en-US"), lang==="both"?900:0);
+  const bn=clipSrc(cat.id,idx,"bn"), en=clipSrc(cat.id,idx,"en");
+  if(cat.id==="en-alpha"){
+    if(lang==="bn") playClips([bn]);
+    else if(lang==="en") playClips([en]);
+    else playClips([en,bn]);
+    return;
+  }
+  if(lang==="bn") playClips([bn]);
+  else if(lang==="en") playClips([en]);
+  else playClips([bn,en]);
+}
+function speakOne(cat,item,lg){
+  const idx=cat.items.indexOf(item); if(idx<0) return;
+  playClips([clipSrc(cat.id,idx,lg)]);
+}
+function speakPair(item){
+  for(const cat of CATS){
+    const idx=cat.items.indexOf(item);
+    if(idx>=0){
+      const lang=S.settings.lang;
+      if(lang==="en") playClips([clipSrc(cat.id,idx,"en")]);
+      else if(lang==="bn") playClips([clipSrc(cat.id,idx,"bn")]);
+      else playClips([clipSrc(cat.id,idx,"bn"),clipSrc(cat.id,idx,"en")]);
+      return;
+    }
+  }
 }
 function addStars(n){
   S.stars+=n; $("#starCount").textContent=S.stars; checkBadges();
@@ -736,6 +811,7 @@ function itemNames(item){
 /* ==================== NAVIGATION ==================== */
 let currentCat="bn-alpha", learnMode="cards";
 function show(view,catId){
+  stopSpeak();
   if(catId) currentCat=catId;
   $$(".view").forEach(v=>v.classList.remove("active"));
   $("#view-"+view).classList.add("active");
@@ -815,6 +891,7 @@ function renderDaily(){
 /* ==================== LEARN ==================== */
 function renderLearn(){
   const cat=CAT(currentCat); S.visitedCats.add(cat.id); checkBadges();
+  warmCat(cat.id);
   $("#learnTitle").textContent=cat.icon+" "+cat.bn;
   $("#learnSub").textContent=cat.en+" · "+cat.sub+" · শেখা হয়েছে "+S.learned[cat.id].size+"/"+cat.items.length;
   $("#modeCards").classList.toggle("on",learnMode==="cards");
@@ -857,13 +934,13 @@ function openDetail(cat,idx){
   $("#learnSub").textContent=cat.en+" · "+cat.sub+" · শেখা হয়েছে "+S.learned[cat.id].size+"/"+cat.items.length;
   speakItem(cat,it);
   const bn=$("#spBn"), en=$("#spEn");
-  if(bn) bn.addEventListener("click",()=>{ if(cat.id==="en-alpha") speak(it.d+". "+it.bn,"bn-BD"); else speak(cat.id==="numbers"?it.bn:(it.d&&cat.id==="bn-alpha"?it.d+"। "+it.bn:it.bn),"bn-BD"); });
-  if(en) en.addEventListener("click",()=>{ if(cat.id==="bn-alpha") speak(it.en,"en-US"); else speak(it.d&&cat.id==="en-alpha"?it.d+". "+it.en:it.en,"en-US"); });
+  if(bn) bn.addEventListener("click",()=>speakOne(cat,it,"bn"));
+  if(en) en.addEventListener("click",()=>speakOne(cat,it,"en"));
   $("#dClose").addEventListener("click",closeDetail);
   $("#dPrev").addEventListener("click",()=>openDetail(cat,(idx-1+cat.items.length)%cat.items.length));
   $("#dNext").addEventListener("click",()=>openDetail(cat,(idx+1)%cat.items.length));
 }
-function closeDetail(){ $("#detailOverlay").classList.remove("open"); if("speechSynthesis" in window) speechSynthesis.cancel(); }
+function closeDetail(){ $("#detailOverlay").classList.remove("open"); stopSpeak(); }
 $("#detailOverlay").addEventListener("click",e=>{ if(e.target.id==="detailOverlay") closeDetail(); });
 
 /* flash cards */
@@ -984,6 +1061,7 @@ function renderQuizQ(){
   const box=$("#quizBox");
   if(quiz.i>=quiz.list.length){ renderQuizEnd(); return; }
   const q=quiz.list[quiz.i], it=q.pick.it;
+  warmCat(q.pick.cat.id);
   const options=shuffle([it].concat(q.wrongs));
   let qHead="", qBig="";
   if(q.type===0){ qHead="এটা কী? · What is this?"; qBig=itemVisualBig(it); }
@@ -1041,6 +1119,7 @@ function renderQuizEnd(){
 let mem={cards:[],open:[],matched:0,moves:0,lock:false,timer:null,secs:0};
 function startMemory(){
   clearInterval(mem.timer);
+  ["animals","fruits","birds","vehicles"].forEach(warmCat);
   const pool=CATS.filter(c=>["animals","fruits","birds","vehicles"].includes(c.id)).flatMap(c=>c.items.filter(i=>i.kind==="word"));
   const picks=sample(pool,6);
   mem={cards:shuffle(picks.concat(picks).map((it,i)=>({it,key:it.bn+"|"+it.en,id:i}))),open:[],matched:0,moves:0,lock:false,timer:null,secs:0};
@@ -1062,7 +1141,7 @@ function flipMem(i,el){
   if(mem.cards[a.i].key===mem.cards[b.i].key){
     a.el.classList.add("matched"); b.el.classList.add("matched");
     mem.open=[]; mem.matched++; $("#memPairs").textContent=mem.matched; sndGood();
-    const it=mem.cards[a.i].it; speak(it.bn+"। "+it.en, S.settings.lang==="en"?"en-US":"bn-BD");
+    const it=mem.cards[a.i].it; speakPair(it);
     if(mem.matched===6){
       clearInterval(mem.timer); S.memoryWins++;
       const bonus = mem.moves<=10?3:mem.moves<=14?2:1;
@@ -1232,7 +1311,8 @@ function installHelp(){
 }
 async function tryInstall(){
   if(deferredPrompt){
-    deferredPrompt.prompt();
+    const showNativeInstall=deferredPrompt.prompt.bind(deferredPrompt);
+    showNativeInstall();
     try{ await deferredPrompt.userChoice; }catch(e){}
     deferredPrompt=null; $("#installBtn").classList.remove("show");
   } else installHelp();
@@ -1255,13 +1335,6 @@ document.addEventListener("keydown",e=>{
 renderHome();
 initTrace();
 checkBadges();
-</script>
-<script>
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", function () {
-    navigator.serviceWorker.register("sw.js");
-  });
-}
 </script>
 </body>
 </html>
