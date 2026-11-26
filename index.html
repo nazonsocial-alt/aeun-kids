@@ -713,7 +713,7 @@ function playClips(list){
     }
     const p=getPlayer();
     p.src=list[i]; i++;
-    p.playbackRate=S.settings.slow?0.85:1.12;
+    p.playbackRate=S.settings.slow?0.85:1.0;
     let advanced=false, watch=null;
     const next=ok=>{
       if(advanced || mySeq!==playSeq) return; advanced=true;
